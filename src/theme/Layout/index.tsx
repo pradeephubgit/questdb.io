@@ -106,6 +106,7 @@ const Layout = ({
               }
             />
           )}
+          <meta name="theme-color" content="#262833" />
         </Head>
         <AnnouncementBar />
         <Navbar />
