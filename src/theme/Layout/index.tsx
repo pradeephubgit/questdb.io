@@ -1,5 +1,5 @@
 import clsx from "clsx"
-import React, { ReactNode } from "react"
+import React, { ReactNode, useLayoutEffect } from "react"
 import Head from "@docusaurus/Head"
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext"
 import useBaseUrl from "@docusaurus/useBaseUrl"
@@ -46,6 +46,7 @@ const Layout = ({
   replaceTitle = false,
   wrapperClassName,
 }: Props) => {
+  const isClient = typeof window !== "undefined"
   const { siteConfig } = useDocusaurusContext()
   const {
     title: siteTitle,
@@ -63,6 +64,15 @@ const Layout = ({
   const metaImageUrl = useBaseUrl(metaImage, { absolute: true })
   const isBlogPost =
     description?.match(/^Blog/g) == null && wrapperClassName === "blog-wrapper"
+
+  useLayoutEffect(() => {
+    if (isClient) {
+      const meta = document.createElement("meta")
+      meta.name = "theme-color"
+      meta.content = "#262833"
+      document.getElementsByTagName("head")[0].appendChild(meta)
+    }
+  }, [isClient])
 
   return (
     <MetadataContextProvider value={{ altFooter, isBlogPost }}>
@@ -106,7 +116,6 @@ const Layout = ({
               }
             />
           )}
-          <meta name="theme-color" content="#262833" />
         </Head>
         <AnnouncementBar />
         <Navbar />
