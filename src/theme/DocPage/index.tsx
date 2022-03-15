@@ -134,6 +134,21 @@ const DocPage = ({
           </div>
         </main>
       </div>
+      <div id="squeak-root" style="max-width: 450px"></div>
+      <script>
+      (function() {
+        window.squeak = {
+            suapabase: {
+                apiKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imlsa3R3bG11YWhtYnB6aWVxa2tzIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NDczMzg0NjYsImV4cCI6MTk2MjkxNDQ2Nn0.shi1VbISX1L2cZrUaPtCLy7LvsP21mhGNVpc1JgkUjA",
+                url: "https://ilktwlmuahmbpzieqkks.supabase.co",
+            },
+        };
+        var d = document,
+            s = d.createElement("script");
+        s.src = "//squeak-questdb-jdizw.ondigitalocean.app/snippet/squeak.js";
+        (d.head || d.body).appendChild(s);
+      })();
+      </script>
     </Layout>
   )
 }
