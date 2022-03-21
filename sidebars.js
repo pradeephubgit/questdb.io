@@ -207,11 +207,11 @@ module.exports = {
       ],
     },
     {
-      label: "FAQ",
+      label: "Troubleshooting",
       type: "category",
       items: [
-        "faq/troubleshooting",
-        "faq/os-error-codes"
+        "troubleshooting/faq",
+        "troubleshooting/os-error-codes"
       ],
     },
   ].filter(Boolean),

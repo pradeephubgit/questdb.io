@@ -93,6 +93,8 @@ pages for the following topics:
   and save disk space
 - [Health monitoring](/docs/operations/health-monitoring/) endpoint for
   determining the status of the instance
+- [Backup and restore](/docs/operations/backup/) on how to perform database
+  backup and restore operations for the instance
 
 ## Reference
 
@@ -184,10 +186,10 @@ following is reference documentation which describes how to use this UI:
 For hints on diagnosing common configuration issues, see the following
 resources:
 
-- [Troubleshooting](/docs/faq/troubleshooting/) guide with solutions for various
-  HW & SW configuration issues
-- [List of OS error codes](/docs/faq/os-error-codes/) page with the list of
-  Operating System error codes
+- [FAQ](/docs/troubleshooting/faq/) guide with solutions for various HW & SW
+  configuration issues
+- [List of OS error codes](/docs/troubleshooting/os-error-codes/) page with the
+  list of Operating System error codes
 
 We are happy to help with any question you may have, particularly to help you
 optimize the performance of your application. Feel free to reach out using the
