@@ -210,7 +210,8 @@ module.exports = {
       label: "FAQ",
       type: "category",
       items: [
-        "faq/troubleshooting"
+        "faq/troubleshooting",
+        "faq/os-error-codes"
       ],
     },
   ].filter(Boolean),
