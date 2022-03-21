@@ -186,8 +186,8 @@ following is reference documentation which describes how to use this UI:
 For hints on diagnosing common configuration issues, see the following
 resources:
 
-- [FAQ](/docs/troubleshooting/faq/) guide with solutions for various HW & SW
-  configuration issues
+- [Troubleshooting FAQ](/docs/troubleshooting/faq/) guide with solutions for
+  various HW & SW configuration issues
 - [List of OS error codes](/docs/troubleshooting/os-error-codes/) page with the
   list of Operating System error codes
 
