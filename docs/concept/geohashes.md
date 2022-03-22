@@ -407,8 +407,8 @@ ts,geohash
 17/01/2022 01:02:21,46swgj10
 ```
 
-Just like InfluxDB line protocol, CSV import does not support geohash literals,
-only strings, so, the same restriction apply.
+Just like InfluxDB line protocol, CSV import supports geohash strings only, so
+the same restrictions apply.
 
 ## Postgres
 
