@@ -248,7 +248,7 @@ hardware powering the demo is a c5.metal instance (AWS) with 24 physical cores
 and 192 GB of memory. The data is stored and accessed from disk, none of the
 results are cached or pre-calculated. The postmortem of QuestDB’s ShowHN on
 HackerNews can be found
-[on DZone](https://dzone.com/articles/we-put-a-sql-database-on-the-internet).
+[on DZone](https://dzone.com/articles/we-put-a-sql-database-on-the-internet). 
 
 ### QuestDB and its growing community
 
