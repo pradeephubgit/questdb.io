@@ -15,19 +15,19 @@ usage guides, and reference documentation for syntax, APIs and configuration.
 This section describes the architecture of QuestDB, how it stores and queries
 data, and introduces features and capabilities unique to the system.
 
-- [Designated timestamp](/docs/concept/designated-timestamp/) is a core feature
+- [Designated timestamp](/docs/concept/designated-timestamp.md) is a core feature
   that enables time-oriented language capabilities and partitioning
-- [Symbol](/docs/concept/symbol/) type makes storing and retrieving repetitive
+- [Symbol](/docs/concept/symbol.md) type makes storing and retrieving repetitive
   strings efficient
-- [Storage model](/docs/concept/storage-model/) describes how QuestDB stores
+- [Storage model](/docs/concept/storage-model.md) describes how QuestDB stores
   records and partitions within tables
-- [Indexes](/docs/concept/indexes/) can be used for faster read access on
+- [Indexes](/docs/concept/indexes.md) can be used for faster read access on
   specific columns
-- [Partitions](/docs/concept/partitions/) can be used for significant
+- [Partitions](/docs/concept/partitions.md) can be used for significant
   performance benefits on calculations and queries
-- [SQL extensions](/docs/concept/sql-extensions/) allow performant time series
+- [SQL extensions](/docs/concept/sql-extensions.md) allow performant time series
   analysis with a concise syntax
-- [Root directory](/docs/concept/root-directory-structure/) describes the
+- [Root directory](/docs/concept/root-directory-structure.md) describes the
   directory contents of QuestDB for storage and configuration
 
 ## Get started
@@ -35,51 +35,51 @@ data, and introduces features and capabilities unique to the system.
 This section explains how to install and run QuestDB using one of the following
 methods:
 
-- [Docker](/docs/get-started/docker/) for repeatable, portable and scalable
+- [Docker](/docs/get-started/docker.md) for repeatable, portable and scalable
   installations
-- [Binaries](/docs/get-started/binaries/) for direct downloads to run on Linux,
+- [Binaries](/docs/get-started/binaries.md) for direct downloads to run on Linux,
   macOS or Windows
-- [Homebrew](/docs/get-started/homebrew/) for running QuestDB on macOS
+- [Homebrew](/docs/get-started/homebrew.md) for running QuestDB on macOS
 
 Once QuestDB is running, a guide is provided to
-[create your first database](/docs/get-started/first-database/).
+[create your first database](/docs/get-started/first-database.md).
 
 ## Develop
 
 This section describes how to connect to QuestDB using a variety of tools and
 programming languages.
 
-- [Connect](/docs/develop/connect/) using Postgres or InfluxDB clients in a
+- [Connect](/docs/develop/connect.md) using Postgres or InfluxDB clients in a
   variety of languages
-- [Insert data](/docs/develop/insert-data/) from popular languages using
+- [Insert data](/docs/develop/insert-data.md) from popular languages using
   Postgres clients or InfluxDB line protocol, or in bulk via REST API
-- [Query data](/docs/develop/query-data/) using Postgres clients, REST API, or
+- [Query data](/docs/develop/query-data.md) using Postgres clients, REST API, or
   the Web Console
-- [Authenticate](/docs/develop/authenticate/) via an additional step before
+- [Authenticate](/docs/develop/authenticate.md) via an additional step before
   inserting records using InfluxDB line protocol
 
 ## Guides
 
-- [Configuring commit lag of out-of-order (O3) data](/docs/guides/out-of-order-commit-lag/)
-- [Importing data in bulk via CSV](/docs/guides/importing-data/)
-- [Version 6.0 migration](/docs/guides/v6-migration/)
+- [Configuring commit lag of out-of-order (O3) data](/docs/guides/out-of-order-commit-lag.md)
+- [Importing data in bulk via CSV](/docs/guides/importing-data.md)
+- [Version 6.0 migration](/docs/guides/v6-migration.md)
 
 ### Deployment
 
-- [Deploy a QuestDB AMI to AWS using Packer](/docs/guides/aws-packer/)
-- [Run QuestDB on Kubernetes](/docs/guides/kubernetes/)
-- [Google Cloud Platform](/docs/guides/google-cloud-platform/)
+- [Deploy a QuestDB AMI to AWS using Packer](/docs/guides/aws-packer.md)
+- [Run QuestDB on Kubernetes](/docs/guides/kubernetes.md)
+- [Google Cloud Platform](/docs/guides/google-cloud-platform.md)
 
 ## Third-party tools
 
 This section describes how to integrate QuestDB with third-party tools and
 utilities for collecting metrics and visualizing data:
 
-- [Grafana](/docs/third-party-tools/grafana/) instructions for connecting
+- [Grafana](/docs/third-party-tools/grafana.md) instructions for connecting
   QuestDB as a datasource for building visualizations and dashboards
-- [Kafka](/docs/third-party-tools/kafka/) guide for ingesting data from topics
+- [Kafka](/docs/third-party-tools/kafka.md) guide for ingesting data from topics
   into QuestDB by means of Kafka Connect
-- [Telegraf](/docs/third-party-tools/telegraf/) guide for collecting system
+- [Telegraf](/docs/third-party-tools/telegraf.md) guide for collecting system
   metrics, specifying QuestDB as an output and visualizing the results
 
 ## Operations
@@ -87,11 +87,11 @@ utilities for collecting metrics and visualizing data:
 This section contains resources for managing QuestDB instances and has dedicated
 pages for the following topics:
 
-- [Capacity planning](/docs/operations/capacity-planning/) for configuring
+- [Capacity planning](/docs/operations/capacity-planning.md) for configuring
   server settings and system resources for common scenarios and edge cases
-- [Data retention](/docs/operations/data-retention/) strategy to delete old data
+- [Data retention](/docs/operations/data-retention.md) strategy to delete old data
   and save disk space
-- [Health monitoring](/docs/operations/health-monitoring/) endpoint for
+- [Health monitoring](/docs/operations/health-monitoring.md) endpoint for
   determining the status of the instance
 
 ## Reference
@@ -100,14 +100,14 @@ This section contains the reference documentation for the following categories:
 
 ### APIs
 
-- [REST](/docs/reference/api/rest/)
-- [Postgres](/docs/reference/api/postgres/)
-- [InfluxDB](/docs/reference/api/ilp/overview/)
-- [Java (embedded)](/docs/reference/api/java-embedded/)
+- [REST](/docs/reference/api/rest.md)
+- [Postgres](/docs/reference/api/postgres.md)
+- [InfluxDB](/docs/reference/api/ilp/overview.md)
+- [Java (embedded)](/docs/reference/api/java-embedded.md)
 
 ### Configuration
 
-The [configuration](/docs/reference/configuration/) page shows all the
+The [configuration](/docs/reference/configuration.md) page shows all the
 properties that can be used to customize QuestDB.
 
 ### Command-line options
@@ -115,76 +115,76 @@ properties that can be used to customize QuestDB.
 The following resource provides info on options that may be passed to QuestDB
 when starting services:
 
-- [Command-line options](/docs/reference/command-line-options/) for starting and
+- [Command-line options](/docs/reference/command-line-options.md) for starting and
   running QuestDB from an executable
 
 ### Functions
 
-- [Aggregation](/docs/reference/function/aggregation/)
-- [Conditional](/docs/reference/function/conditional/)
-- [Date time](/docs/reference/function/date-time/)
-- [Meta](/docs/reference/function/meta/)
-- [Numeric](/docs/reference/function/numeric/)
-- [Random value generator](/docs/reference/function/random-value-generator/)
-- [Row generator](/docs/reference/function/row-generator/)
-- [Text](/docs/reference/function/text/)
-- [Timestamp generator](/docs/reference/function/timestamp-generator/)
-- [Timestamp](/docs/reference/function/timestamp/)
+- [Aggregation](/docs/reference/function/aggregation.md)
+- [Conditional](/docs/reference/function/conditional.md)
+- [Date time](/docs/reference/function/date-time.md)
+- [Meta](/docs/reference/function/meta.md)
+- [Numeric](/docs/reference/function/numeric.md)
+- [Random value generator](/docs/reference/function/random-value-generator.md)
+- [Row generator](/docs/reference/function/row-generator.md)
+- [Text](/docs/reference/function/text.md)
+- [Timestamp generator](/docs/reference/function/timestamp-generator.md)
+- [Timestamp](/docs/reference/function/timestamp.md)
 
 ### Operators
 
-- [Bitwise](/docs/reference/operators/bitwise/)
+- [Bitwise](/docs/reference/operators/bitwise.md)
 
 ### SQL
 
-- [SQL Execution order](/docs/reference/sql/datatypes/)
-- [Data types](/docs/reference/sql/datatypes/)
-- [ALTER TABLE ADD COLUMN](/docs/reference/sql/alter-table-add-column/)
-- [ALTER TABLE ALTER COLUMN ADD INDEX](/docs/reference/sql/alter-table-alter-column-add-index/)
-- [ALTER TABLE RENAME COLUMN](/docs/reference/sql/alter-table-rename-column/)
-- [ALTER TABLE DROP COLUMN](/docs/reference/sql/alter-table-drop-column/)
-- [ALTER TABLE ATTACH PARTITION](/docs/reference/sql/alter-table-attach-partition/)
-- [ALTER TABLE DROP PARTITION](/docs/reference/sql/alter-table-drop-partition/)
-- [ALTER TABLE SET PARAM](/docs/reference/sql/alter-table-set-param/)
-- [BACKUP](/docs/reference/sql/backup/)
-- [CASE](/docs/reference/sql/case/)
-- [CAST](/docs/reference/sql/cast/)
-- [COPY](/docs/reference/sql/copy/)
-- [CREATE TABLE](/docs/reference/sql/create-table/)
-- [DISTINCT](/docs/reference/sql/distinct/)
-- [EXCEPT INTERSECT](/docs/reference/sql/except-intersect/)
-- [FILL](/docs/reference/sql/fill/)
-- [DROP TABLE](/docs/reference/sql/drop/)
-- [GROUP BY](/docs/reference/sql/group-by/)
-- [INSERT](/docs/reference/sql/insert/)
-- [JOIN](/docs/reference/sql/join/)
-- [LATEST BY](/docs/reference/sql/latest-on/)
-- [LIMIT](/docs/reference/sql/limit/)
-- [ORDER BY](/docs/reference/sql/order-by/)
-- [RENAME TABLE](/docs/reference/sql/rename/)
-- [SAMPLE BY](/docs/reference/sql/sample-by/)
-- [SELECT](/docs/reference/sql/select/)
-- [SHOW](/docs/reference/sql/show/)
-- [SNAPSHOT](/docs/reference/sql/snapshot/)
-- [TRUNCATE TABLE](/docs/reference/sql/truncate/)
-- [VACUUM PARTITIONS](/docs/reference/sql/vacuum-partitions/)
-- [UNION](/docs/reference/sql/union/)
-- [WHERE](/docs/reference/sql/where/)
-- [WITH](/docs/reference/sql/with/)
+- [SQL Execution order](/docs/reference/sql/datatypes.md)
+- [Data types](/docs/reference/sql/datatypes.md)
+- [ALTER TABLE ADD COLUMN](/docs/reference/sql/alter-table-add-column.md)
+- [ALTER TABLE ALTER COLUMN ADD INDEX](/docs/reference/sql/alter-table-alter-column-add-index.md)
+- [ALTER TABLE RENAME COLUMN](/docs/reference/sql/alter-table-rename-column.md)
+- [ALTER TABLE DROP COLUMN](/docs/reference/sql/alter-table-drop-column.md)
+- [ALTER TABLE ATTACH PARTITION](/docs/reference/sql/alter-table-attach-partition.md)
+- [ALTER TABLE DROP PARTITION](/docs/reference/sql/alter-table-drop-partition.md)
+- [ALTER TABLE SET PARAM](/docs/reference/sql/alter-table-set-param.md)
+- [BACKUP](/docs/reference/sql/backup.md)
+- [CASE](/docs/reference/sql/case.md)
+- [CAST](/docs/reference/sql/cast.md)
+- [COPY](/docs/reference/sql/copy.md)
+- [CREATE TABLE](/docs/reference/sql/create-table.md)
+- [DISTINCT](/docs/reference/sql/distinct.md)
+- [EXCEPT INTERSECT](/docs/reference/sql/except-intersect.md)
+- [FILL](/docs/reference/sql/fill.md)
+- [DROP TABLE](/docs/reference/sql/drop.md)
+- [GROUP BY](/docs/reference/sql/group-by.md)
+- [INSERT](/docs/reference/sql/insert.md)
+- [JOIN](/docs/reference/sql/join.md)
+- [LATEST BY](/docs/reference/sql/latest-on.md)
+- [LIMIT](/docs/reference/sql/limit.md)
+- [ORDER BY](/docs/reference/sql/order-by.md)
+- [RENAME TABLE](/docs/reference/sql/rename.md)
+- [SAMPLE BY](/docs/reference/sql/sample-by.md)
+- [SELECT](/docs/reference/sql/select.md)
+- [SHOW](/docs/reference/sql/show.md)
+- [SNAPSHOT](/docs/reference/sql/snapshot.md)
+- [TRUNCATE TABLE](/docs/reference/sql/truncate.md)
+- [VACUUM PARTITIONS](/docs/reference/sql/vacuum-partitions.md)
+- [UNION](/docs/reference/sql/union.md)
+- [WHERE](/docs/reference/sql/where.md)
+- [WITH](/docs/reference/sql/with.md)
 
 ### Web console
 
 QuestDB is bundled with a user interface which runs by default on port 9000. The
 following is reference documentation which describes how to use this UI:
 
-- [Web console](/docs/reference/web-console/) reference for using the bundled UI
+- [Web console](/docs/reference/web-console.md) reference for using the bundled UI
 
 ## Support
 
 For hints on diagnosing common configuration issues, see the following
 resources:
 
-- [Troubleshooting](/docs/faq/troubleshooting/) guide with solutions for various
+- [Troubleshooting](/docs/faq/troubleshooting.md) guide with solutions for various
   HW & SW configuration issues
 
 We are happy to help with any question you may have, particularly to help you
