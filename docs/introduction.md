@@ -15,7 +15,7 @@ usage guides, and reference documentation for syntax, APIs and configuration.
 This section describes the architecture of QuestDB, how it stores and queries
 data, and introduces features and capabilities unique to the system.
 
-- [Designated timestamp](/docs/concept/designated-timestamp/) is a core feature
+- [Designated timestamp](/docs/concept/designated-timestamp.md) is a core feature
   that enables time-oriented language capabilities and partitioning
 - [Symbol](/docs/concept/symbol/) type makes storing and retrieving repetitive
   strings efficient
