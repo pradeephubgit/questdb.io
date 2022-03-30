@@ -123,8 +123,8 @@ This provides us with a table with the following content:
 
 ### Single column
 
-When `LATEST ON` is provided a single column, and it is of type `SYMBOL`, the query will
-end as soon as all distinct symbol values are found.
+When `LATEST ON` is provided a single column of the type `SYMBOL`, the query will
+end after all distinct symbol values are found.
 
 ```questdb-sql title="Latest records by customer ID"
 SELECT * FROM balances
