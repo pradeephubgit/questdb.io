@@ -37,7 +37,7 @@ SELECT * FROM ratings;
 
 ### Specific columns
 
-To select specific columns, replace \* with the coulmn names. 
+To select specific columns, replace \* with the column names. 
 
 Example:
 
