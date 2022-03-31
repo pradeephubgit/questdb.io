@@ -66,8 +66,8 @@ about the functions used here, see the
 [row generator](/docs/reference/function/row-generator/) pages.
 
 Our `sensors` table now contains 10,000 randomly-generated sensor values of
-different makes and in various cities. Data is generated randomly, 
-but the table should look similar to the one below:
+different makes and in various cities. Though table data is generated randomly, 
+the table should look similar to the one below:
 
 | ID  | make              | city     |
 | --- | ----------------- | -------- |
