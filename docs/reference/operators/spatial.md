@@ -3,7 +3,7 @@ title: Spatial operators
 sidebar_label: Spatial
 description: Spatial operators reference documentation.
 ---
-
+ 
 This page describes the available operators to assist with performing spatial
 calculations. For more information on this type of data, see
 [geohashes documentation](/docs/concept/geohashes/) and
