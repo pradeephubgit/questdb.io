@@ -33,7 +33,7 @@ is used as a representation of Geohashes, and are therefore comprised of:
 - all decimal digits (0-9) and
 - almost all of the alphabet (case-insensitive) **except "a", "i", "l",** **"o"**.
 
-The followng figure illustrates how increasing the length of a geohash results
+The following figure illustrates how increasing the length of a geohash results
 in a higher-precision grid size:
 
 import Screenshot from "@theme/Screenshot"
@@ -187,7 +187,7 @@ INSERT INTO my_geo_data values(#u, #u33d8b12);
 ```
 
 Larger-precision geohashes are truncated when inserted into smaller-precision
-columns, and inserting smaller-precision geohases into larger-precision columns
+columns, and inserting smaller-precision geohashes into larger-precision columns
 produces an error, i.e.:
 
 ```questdb-sql
