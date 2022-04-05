@@ -105,8 +105,8 @@ LATEST ON timestamp PARTITION BY y;
 ```
 
 This syntax makes the LATEST ON clause consistent with the query execution order
-since LATEST ON now must follow the WHERE clause. Release 6.2 also includes a
-number of fixes to make sure that the WHERE clause always gets applied before the
+since LATEST ON follows the WHERE clause. Release 6.2 also includes a
+number of fixes to ensure that the WHERE clause always gets applied before
 LATEST ON. For more details on the new syntax, see the
 [LATEST ON documentation](/docs/reference/sql/latest-on/).
 
