@@ -30,7 +30,7 @@ const currentOpenings: Opening[] = [
 
   {
     href: "senior-backend-engineer-python/",
-    title: "Backend Engineers (Python)",
+    title: "Senior Backend Engineers (Python)",
     location: "Remote",
   },
 
