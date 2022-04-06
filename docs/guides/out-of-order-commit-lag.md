@@ -180,7 +180,7 @@ select id, name, maxUncommittedRows, commitLag from tables();
 | 1   | my_table    | 250000             | 240000000 |
 | 2   | device_data | 10000              | 30000000  |
 
-The values can changed for each table by doing the following:
+The values can be changed for each table by doing the following:
 
 ```questdb-sql title="Altering maximum number of out-of-order rows via SQL"
 ALTER TABLE my_table SET PARAM maxUncommittedRows = 10000;
