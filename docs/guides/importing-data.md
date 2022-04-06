@@ -17,7 +17,7 @@ improve automatic detection.
 A `schema` JSON object can be provided with POST requests to `/imp` while
 creating tables via CSV import. This allows for more control over user-defined
 patterns for timestamps, or for explicitly setting types during column-creation.
-The the following example demonstrates basic usage, in this case, that the
+In the following example that demonstrates basic usage, it is specified that the
 `ticker_name` column should be parsed as `SYMBOL` type instead of `STRING`:
 
 ```bash
@@ -26,7 +26,7 @@ curl -F schema='[{"name":"ticker_name", "type": "SYMBOL"}]' \
 ```
 
 If a timestamp column (`ts`) in this CSV file has a custom or non-standard
-timestamp format, this may be included with the call as follows:
+timestamp format, this may be included with the call, as follows:
 
 ```bash
 curl -F schema='[
@@ -45,7 +45,7 @@ curl -F schema='[
 ]' -F data=@my_file.csv 'http://localhost:9000/imp'
 ```
 
-More information on the patterns for timestamps can be found on the
+More information on the patterns for timestamps is provided in the
 [date and time functions](/docs/reference/function/date-time/#date-and-timestamp-format)
 page.
 
@@ -171,8 +171,8 @@ curl -F data=@weather-unordered.csv \
 
 :::info
 
-The `timestamp` and `partitionBy` parameters **must be provided** for commit lag
-and max uncommitted rows to have any effect in the API call above.
+The `timestamp` and `partitionBy` parameters **must be provided** for `commitLag` and
+`maxUncommittedRows` to have any effect in the API call above.
 
 :::
 
