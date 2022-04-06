@@ -85,7 +85,7 @@ This example adds a `symbol` type with the following parameters:
 
 - **capacity** sets the maximum number of unique symbol values
 - **caching** nocache disables the function, and allows dealing with larger value counts
-- **index** specifies an index capacity for the symbol column, with a storage block value
+- **index capacity** specifies an index capacity for the symbol column, with a storage block value
 
 A full description of the options used above for `symbol` types can be found in
 the [CREATE TABLE](/docs/reference/sql/create-table/#symbol) page.
