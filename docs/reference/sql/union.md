@@ -39,7 +39,7 @@ listB
 | Green Pen   | 3   |
 
 ```questdb-sql
-liastA UNION listB
+listA UNION listB
 ```
 
 will return
@@ -53,7 +53,7 @@ will return
 | Black Pen   | 2   |
 
 ```questdb-sql
-liastA UNION ALL listB
+listA UNION ALL listB
 ```
 
 will return
