@@ -255,7 +255,8 @@ line.tcp.net.connection.timeout=60000
 line.tcp.net.rcvbuf=4m
 ```
 
-Let's assume you would like to configure InfluxDB line protocol for large number of concurrent connections on Windows:
+Let's assume you would like to configure InfluxDB line protocol for
+large number of concurrent connections on Windows:
 
 ```bash title="server.conf InfluxDB line protocol network example configuration for large
 number of concurrent connections on Windows" 
