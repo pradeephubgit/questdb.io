@@ -241,8 +241,7 @@ And `<config>` is one of the following settings:
 For example, this is configuration for Linux with relatively low number of
 concurrent connections:
 
-```bash title="server.conf InfluxDB line protocol network example configuration for 
-moderate number of concurrent connections"
+```bash title="server.conf InfluxDB line protocol network example configuration for moderate number of concurrent connections"
 # bind to all IP addresses on port 9009
 line.tcp.net.bind.to=0.0.0.0:9009
 # maximum of 30 concurrent connection allowed
