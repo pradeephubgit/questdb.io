@@ -98,7 +98,7 @@ Return value type is `timestamp`.
 
 **Examples:**
 
-```questdb-sql title="Filter records to created within last day"
+```questdb-sql title="Filter records created within last day"
 SELECT created, origin FROM telemetry
 WHERE created > dateadd('d', -1, now());
 ```
