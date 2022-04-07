@@ -345,7 +345,7 @@ see the [Java API documentation](/docs/reference/api/java-embedded/).
 ## InfluxDB line protocol
 
 Geohashes may also be inserted via InfluxDB line protocol. In order to perform
-inserts in this way:
+inserts in this way;
 
 1. Create table with columns of geohash type beforehand:
 
