@@ -362,7 +362,7 @@ tracking geohash="46swgj10"
 :::info
 
 The InfluxDB Line Protocol parser does not support geohash literals, only
-strings. This means that table columns of type `geohash` with the desired
+strings. This means that table columns of type `geohash` type with the desired
 precision must exist before inserting rows with this protocol.
 
 If a value cannot be converted or is omitted it will be set as `NULL`
