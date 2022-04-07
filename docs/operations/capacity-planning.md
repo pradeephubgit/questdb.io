@@ -124,7 +124,7 @@ forecast behavior of the database.
 
 ### Shared workers
 
-The number of worker threads shared across the application can be configured as 
+The number of worker threads shared across the application can be configured as
 well as affinity to pin processes to specific CPUs by ID. Shared worker threads
 service SQL execution subsystems and, in the default configuration, every other
 subsystem. Except for SQL, every other subsystem can be configured to use their
@@ -137,7 +137,7 @@ are available. This behavior is default but can be overridden via configuration.
 By checking the CPU Core count, QuestDB will assume that CPU hyper-threading is
 enabled. If hyper-threading is disabled on your system, you will have to
 configure CPU pools manually. Please refer to [CPU affinity](#cpu-affinity)
-configuration. 
+configuration.
 
 #### 8 CPU Cores or less
 
