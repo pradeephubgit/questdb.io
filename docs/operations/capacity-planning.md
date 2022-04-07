@@ -14,7 +14,7 @@ edge cases and common setup configurations.
 All the configuration settings referred to below except for OS settings are
 configured in QuestDB by either a `server.conf` configuration file or as
 environment variables. For more details on applying configuration settings in
-QuestDB, refer the [configuration](/docs/reference/configuration/) page.
+QuestDB, refer to the [configuration](/docs/reference/configuration/) page.
 
 ## Storage and filesystem
 
@@ -47,14 +47,14 @@ information on this topic, see the following resources:
 **Records per partition**
 
 The number of records per partition should factor into the partitioning strategy
-(`YEAR`, `MONTH`, `DAY`, `HOUR`). Too many or too few records per partition, 
-and query operations across too many partitions results in slower query times.
-A general guideline for the optimal number of records per partition is between
-1 million and 100 million.
+(`YEAR`, `MONTH`, `DAY`, `HOUR`). Having too many records per partition or 
+having too few records per partition and having query operations across too many
+partitions has the result of slower query times. A general guideline is that
+roughly between 1 million and 100 million records is optimal per partition.
 
 ### Choosing a schema
 
-This section provides some tips for choosing the right schema for a dataset,
+This section provides some tips for choosing the right schema for a dataset
 based on the storage space that type occupies in QuestDB.
 
 #### Symbols
@@ -67,7 +67,8 @@ on queries as symbols are internally stored as `int` values.
 :::info
 
 Only symbols can be indexed in QuestDB. Although multiple indexes can be
-specified for a table, it adversely impacts the rate of ingestion.
+specified for a table, there would be a performance impact on the rate of
+ingestion.
 
 :::
 
@@ -81,11 +82,11 @@ CREATE TABLE my_table(
 ) timestamp(ts)  PARTITION BY DAY;
 ```
 
-This example adds a `symbol` type with the following parameters:
+This example adds a `symbol` type with:
 
-- **capacity** sets the maximum number of unique symbol values
-- **caching** nocache disables the function, and allows dealing with larger value counts
-- **index capacity** specifies an index capacity for the symbol column, with a storage block value
+- **capacity** specified to estimate how many unique symbols values to expect
+- **caching** disabled which allows dealing with larger value counts
+- **index** for the symbol column with a storage block value
 
 A full description of the options used above for `symbol` types can be found in
 the [CREATE TABLE](/docs/reference/sql/create-table/#symbol) page.
@@ -123,8 +124,8 @@ forecast behavior of the database.
 
 ### Shared workers
 
-You can configure the number of worker threads shared across the application, and
-the affinity to pin processes to specific CPUs by ID. Shared worker threads
+The number of worker threads shared across the application can be configured as 
+well as affinity to pin processes to specific CPUs by ID. Shared worker threads
 service SQL execution subsystems and, in the default configuration, every other
 subsystem. Except for SQL, every other subsystem can be configured to use their
 own worker threads. More information on these settings can be found on the
@@ -135,7 +136,8 @@ QuestDB will allocate CPU resources differently depending on how many CPU cores
 are available. This behavior is default but can be overridden via configuration.
 By checking the CPU Core count, QuestDB will assume that CPU hyper-threading is
 enabled. If hyper-threading is disabled on your system, you will have to
-configure CPU pools manually. 
+configure CPU pools manually. Please refer to [CPU affinity](#cpu-affinity)
+configuration. 
 
 #### 8 CPU Cores or less
 
@@ -232,13 +234,15 @@ And `<config>` is one of the following settings:
 | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `limit`   | The number of simultaneous connections to the server. This value is intended to control server memory consumption.                                                                                                         |
 | `timeout` | Connection idle timeout in milliseconds. Connections are closed by the server when this timeout lapses.                                                                                                                    |
-| `hint`    | Applicable only for Windows, where TCP backlog limit is hit. For example, Windows 10 allows a maximum of 200 connections. Even if the limit is set higher, without hint=true it won't be possible to connect more than 200 connections. |
-| `sndbuf`  | Maximum send buffer size on each TCP socket. If value is -1, the socket send buffer remains unchanged from the OS default.                                                                                                          |
-| `rcvbuf`  | Maximum receive buffer size on each TCP socket. If value is -1, the socket receive buffer remains unchanged from the OS default.                                                                                               |
+| `hint`    | Applicable only for Windows, where TCP backlog limit is hit. For example Windows 10 allows a max of 200 connection. Even if the limit is set higher, without hint=true it won't be possible to connect more than 200 connection. |
+| `sndbuf`  | Maximum send buffer size on each TCP socket. If value is -1 the socket send buffer remains unchanged from OS default.                                                                                                          |
+| `rcvbuf`  | Maximum receive buffer size on each TCP socket. If value is -1 the socket receive buffer remains unchanged from OS default.                                                                                               |
 
-For example, this is configuration for Linux, with a relatively low number of concurrent connections:
+For example, this is configuration for Linux with relatively low number of
+concurrent connections:
 
-```bash title="server.conf InfluxDB line protocol network configuration example"
+```bash title="server.conf InfluxDB line protocol network example configuration for 
+moderate number of concurrent connections"
 # bind to all IP addresses on port 9009
 line.tcp.net.bind.to=0.0.0.0:9009
 # maximum of 30 concurrent connection allowed
@@ -247,13 +251,14 @@ line.tcp.net.connection.limit=30
 line.tcp.net.connection.hint=false
 # connections will time out after 60s of no activity
 line.tcp.net.connection.timeout=60000
-# receive buffer is 4Mb to accommodate large messages
+# receive buffer is 4Mb to accomodate large messages
 line.tcp.net.rcvbuf=4m
 ```
 
-Let's assume you would like to configure InfluxDB line protocol for a large number of concurrent connections on Windows:
+Let's assume you would like to configure InfluxDB line protocol for large number of concurrent connections on Windows:
 
-```bash title="server.conf InfluxDB line protocol network configuration example" 
+```bash title="server.conf InfluxDB line protocol network example configuration for large
+number of concurrent connections on Windows" 
 # bind to specific NIC on port 9009, NIC is identified by IP address
 line.tcp.net.bind.to=10.75.26.3:9009
 # large number of concurrent connections
@@ -267,7 +272,7 @@ line.tcp.net.connection.timeout=30000
 line.tcp.net.rcvbuf=1m
 ```
 
-For reference on the defaults of the `http` and `pg` protocols, refer the
+For reference on the defaults of the `http` and `pg` protocols, refer to the
 [server configuration page](/docs/reference/configuration/)
 
 ## OS configuration
