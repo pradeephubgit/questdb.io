@@ -26,7 +26,7 @@ ratings ORDER BY userId DESC;
 ratings ORDER BY userId, rating DESC;
 ```
 
-## Ressources management
+## Resources management
 
 :::caution
 
