@@ -389,7 +389,7 @@ insert and query geohashes:
 :::info
 
 When querying geohash values over Postgres wire protocol, QuestDB always returns
-geohashes in text mode (i.e. as strings) as opposed to binary.
+geohashes in text mode (i.e. as strings) as opposed to binary
 
 :::
 
