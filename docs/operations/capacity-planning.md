@@ -234,7 +234,7 @@ And `<config>` is one of the following settings:
 | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `limit`   | The number of simultaneous connections to the server. This value is intended to control server memory consumption.                                                                                                         |
 | `timeout` | Connection idle timeout in milliseconds. Connections are closed by the server when this timeout lapses.                                                                                                                    |
-| `hint`    | Applicable only for Windows, where TCP backlog limit is hit. For example Windows 10 allows a max of 200 connection. Even if the limit is set higher, without hint=true it won't be possible to connect more than 200 connection. |
+| `hint`    | Applicable only for Windows, where TCP backlog limit is hit. For example Windows 10 allows max of 200 connection. Even if limit is set higher, without hint=true it won't be possible to connect more than 200 connection. |
 | `sndbuf`  | Maximum send buffer size on each TCP socket. If value is -1 the socket send buffer remains unchanged from OS default.                                                                                                          |
 | `rcvbuf`  | Maximum receive buffer size on each TCP socket. If value is -1 the socket receive buffer remains unchanged from OS default.                                                                                               |
 
