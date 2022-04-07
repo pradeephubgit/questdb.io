@@ -54,7 +54,7 @@ roughly between 1 million and 100 million records is optimal per partition.
 
 ### Choosing a schema
 
-This section provides some tips for choosing the right schema for a dataset
+This section provides some hints for choosing the right schema for a dataset
 based on the storage space that types occupy in QuestDB.
 
 #### Symbols
