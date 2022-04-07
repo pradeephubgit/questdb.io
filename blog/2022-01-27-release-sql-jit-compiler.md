@@ -97,18 +97,18 @@ For more information on the JIT compiler, refer to this
 
 ## New LATEST BY syntax and improvements
 
-The database now supports a new syntax for LATEST BY clause:
+The LATEST BY syntax is deprecated, and the database now supports a new syntax called LATEST ON:
 
 ```sql
 SELECT * FROM tab WHERE x > 0
 LATEST ON timestamp PARTITION BY y;
 ```
 
-This syntax makes the LATEST BY clause consistent with the query execution order
-since LATEST BY now must follow the WHERE clause. Release 6.2 also includes a
-number of fixes to make sure that the WHERE always gets applied before the
-LATEST BY. For more details on the new syntax, see the
-[LATEST BY documentation](/docs/reference/sql/latest-on/).
+This syntax makes the LATEST ON clause consistent with the query execution order
+since LATEST ON follows the WHERE clause. Release 6.2 also includes a
+number of fixes to ensure that the WHERE clause always gets applied before
+LATEST ON. For more details on the new syntax, see the
+[LATEST ON documentation](/docs/reference/sql/latest-on/).
 
 ## Optimize LIMIT SQL queries
 
