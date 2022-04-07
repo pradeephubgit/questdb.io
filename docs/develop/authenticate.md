@@ -89,7 +89,7 @@ Y=$(cat /var/lib/questdb/conf/full_auth.json | jq -r '.y')
 echo "$KID ec-p-256-sha256 $X $Y" | tee /var/lib/questdb/conf/auth.txt
 ```
 
-Once you create the file, reference it in the server
+Once you created the file, you will need to reference it in the server
 [configuration](/docs/reference/configuration/):
 
 ```bash title='/path/to/server.conf'
@@ -113,7 +113,7 @@ following keys:
 }
 ```
 
-For this kind of key, the `d` property is used to generate the secret key.
+For this kind of key, the `d` property is used to generate the the secret key.
 The `x` and `y` parameters are used to generate the public key (values that we
 retrieve in the server authentication file).
 
@@ -123,7 +123,7 @@ The server will now expect the client to send its key id (terminated with `\n`)
 straight after `connect()`. The server will respond with a challenge (printable
 characters terminated with `\n`). The client needs to sign the challenge and
 respond to the server with the `base64` encoded signature (terminated with
-`\n`). If all is good the client can then continue. If not, the server will
+`\n`). If all is good the client can then continue, if not the server will
 disconnect and log the failure.
 
 import Tabs from "@theme/Tabs"
