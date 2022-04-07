@@ -73,10 +73,10 @@ questdb.exe [start|stop|status|install|remove] \
 
 :::info
 
-When running multiple QuestDB sertvices, a tag must be used to disambiguate
+When running multiple QuestDB services, a tag must be used to disambiguate
 between services for `start` and `stop` commands. There will be conflicting
 ports and root directories if only the tag flag is specified when starting
-multiple services. Each new service should have it's own config file or should
+multiple services. Each new service should have its own config file or should
 be started with separate port and root directory options.
 
 :::
