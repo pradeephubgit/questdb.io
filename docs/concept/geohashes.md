@@ -6,7 +6,7 @@ description:
   longitude, inserting via SQL, InfluxDB line protocol, CSV, and more.
 ---
 
-QuestDB adds support for working with geospatial data through a `geohash` type.
+QuestDB adds support for working with geospatial data through a type `geohash` type.
 This page describes how to use geohashes, with an overview of the syntax,
 including hints on converting from latitude and longitude, inserting via SQL,
 InfluxDB line protocol, and via Java embedded API.
