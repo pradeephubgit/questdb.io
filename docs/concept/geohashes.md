@@ -31,9 +31,9 @@ In order to be compact, [base32](https://en.wikipedia.org/wiki/Base32#Geohash)
 is used as a representation of Geohashes, and are therefore comprised of:
 
 - all decimal digits (0-9) and
-- almost all of the alphabet (case-insensitive) **except "a", "i", "l",** **"o"**.
+- almost all of the alphabet (case-insensitive) **except "a", "i", "l", "o"**.
 
-The following figure illustrates how increasing the length of a geohash results
+The followng figure illustrates how increasing the length of a geohash results
 in a higher-precision grid size:
 
 import Screenshot from "@theme/Screenshot"
@@ -187,7 +187,7 @@ INSERT INTO my_geo_data values(#u, #u33d8b12);
 ```
 
 Larger-precision geohashes are truncated when inserted into smaller-precision
-columns, and inserting smaller-precision geohashes into larger-precision columns
+columns, and inserting smaller-precision geohases into larger-precision columns
 produces an error, i.e.:
 
 ```questdb-sql
@@ -273,7 +273,7 @@ equal to or is within a larger grid. The following query will return the most
 recent entries by device ID if the `g8c` column contains a geohash within
 `u33d`:
 
-```questdb-sql title="LATEST ON usage"
+```questdb-sql title="LATEST BY usage"
 SELECT * FROM geo_data
 WHERE g8c within(#u33d)
 LATEST ON ts PARTITION BY device_id;
@@ -281,7 +281,7 @@ LATEST ON ts PARTITION BY device_id;
 
 :::info
 
-The `within` operator can only be applied in `LATEST ON` queries and all symbol
+The `within` operator can only be applied in `LATEST BY` queries and all symbol
 columns within the query **must be indexed**.
 
 :::
@@ -296,7 +296,7 @@ For more information on the use of this operator, see the
 
 ## Java embedded usage
 
-You can insert geohashes into tables via Java (embedded) QuestDB instance through the
+Inserting geohashes into tables via Java (embedded) QuestDB instance through the
 `TableWriter`'s `putGeoHash` method which accepts `LONG` values natively with
 the destination precision. Additionally, `GeoHashes.fromString` may be used for
 string conversion, but comes with some performance overhead as opposed to `long`
@@ -344,8 +344,8 @@ see the [Java API documentation](/docs/reference/api/java-embedded/).
 
 ## InfluxDB line protocol
 
-Geohashes may also be inserted via InfluxDB line protocol. The required steps 
-are given below. 
+Geohashes may also be inserted via InfluxDB line protocol. In order to perform
+inserts in this way:
 
 1. Create table with columns of geohash type beforehand:
 
@@ -353,7 +353,7 @@ are given below.
 CREATE TABLE tracking (ts timestamp, geohash geohash(8c));
 ```
 
-2. Insert via InfluxDB line protocol using the `geohash` field:
+2. Inserts via InfluxDB line protocol using the `geohash` field:
 
 ```bash
 tracking geohash="46swgj10"
@@ -361,11 +361,11 @@ tracking geohash="46swgj10"
 
 :::info
 
-The InfluxDB Line Protocol parser does not support geohash literals, but only supports
-strings. This means that table columns of the type `geohash` with the desired
+The InfluxDB Line Protocol parser does not support geohash literals, only
+strings. This means that table columns of type `geohash` with the desired
 precision must exist before inserting rows with this protocol.
 
-If a value cannot be converted or is omitted, it will be set as `NULL`
+If a value cannot be converted or is omitted it will be set as `NULL`
 
 :::
 
@@ -389,7 +389,7 @@ insert and query geohashes:
 :::info
 
 When querying geohash values over Postgres wire protocol, QuestDB always returns
-geohashes in text mode (i.e. as strings) as opposed to binary mode
+geohashes in text mode (i.e. as strings) as opposed to binary.
 
 :::
 
