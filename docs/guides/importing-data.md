@@ -171,8 +171,8 @@ curl -F data=@weather-unordered.csv \
 
 :::info
 
-The `timestamp` and `partitionBy` parameters **must be provided** for `commitLag`
-and `maxUncommittedRows` rows to have any effect in the API call above.
+The `timestamp` and `partitionBy` parameters **must be provided** for `commitLag` and
+`maxUncommittedRows` rows to have any effect in the API call above.
 
 :::
 
