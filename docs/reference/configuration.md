@@ -65,7 +65,7 @@ export QDB_SHARED_WORKER_COUNT=5
 
 ## Docker
 
-This section describes how configure QuestDB server settings when running
+This section describes how to configure QuestDB server settings when running
 QuestDB in a Docker container. A command to run QuestDB via Docker with default
 interfaces is as follows:
 
@@ -86,13 +86,13 @@ This publishes the following ports:
 - `-p 9003:9003` -
   [Min health server and Prometheus metrics](#minimal-http-server)
 
-The examples in this section change the default HTTP and REST API port from
-`9000` to `4000` for illustrative purposes, and demonstrate how to publish this
+In the examples of this section, the default HTTP and REST API port numbers are changed from
+`9000` to `4000`. This is only for illustrative purposes, and demonstrates how to publish this
 port with a non-default property.
 
 ### Environment variables
 
-Server configuration can be passed to QuestDB running in Docker by using the
+Server configuration parameters can be passed to QuestDB running in Docker by using the
 `-e` flag to pass an environment variable to a container:
 
 ```bash
@@ -102,24 +102,23 @@ docker run -p 4000:4000 -e QDB_HTTP_BIND_TO=0.0.0.0:4000 questdb/questdb
 ### Mounting a volume
 
 A server configuration file can be provided by mounting a local directory in a
-QuestDB container. Given the following configuration file which overrides the
+QuestDB container. Consider the following configuration in the file. It overrides the
 default HTTP bind property:
 
 ```shell title="./server.conf"
 http.bind.to=0.0.0.0:4000
 ```
 
-Running the container with the `-v` flag allows for mounting the current
-directory to QuestDB's `conf` directory in the container. With the server
-configuration above, HTTP ports for the web console and REST API will be
-available on `localhost:4000`:
+With this configuration, HTTP ports for the web console and REST API will be available
+on `localhost:4000`. When you run the container with the `-v` flag now, it allows for
+mounting the current directory to QuestDB's `conf` directory:
 
 ```bash
 docker run -v "$(pwd):/root/.questdb/conf" -p 4000:4000 questdb/questdb
 ```
 
 To mount the full root directory of QuestDB when running in a Docker container,
-provide a the configuration in a `conf` directory:
+provide the configuration in the `conf` directory:
 
 ```shell title="./conf/server.conf"
 http.bind.to=0.0.0.0:4000
@@ -144,7 +143,7 @@ The current directory will then have data persisted to disk:
 
 This section lists the configuration keys available to QuestDB by topic or
 subsystem. Parameters for specifying buffer and memory page sizes are provided
-in the format `n<unit>`, where `<unit>` can be one of the following:
+in the format `n<unit>`, where `<unit>` is one of the following:
 
 - `m` for **MB**
 - `k` for **kB**
@@ -158,25 +157,25 @@ http.net.connection.sndbuf=2m
 ### Shared worker
 
 Shared worker threads service SQL execution subsystems and (in the default
-configuration) every other subsystem.
+configuration,) every other subsystem.
 
 | Property                  | Default | Description                                                                                                                                                  |
 | ------------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | shared.worker.count       | 2       | Number of worker threads shared across the application. Increasing this number will increase parallelism in the application at the expense of CPU resources. |
-| shared.worker.affinity    |         | Comma-delimited list of CPU ids, one per thread specified in `shared.worker.count`. By default, threads have no CPU affinity.                                |
+| shared.worker.affinity    |         | Comma-delimited list of CPU IDs, one per thread specified in `shared.worker.count`. By default, threads have no CPU affinity.                                |
 | shared.worker.haltOnError | false   | Toggle whether worker should stop on error.                                                                                                                  |
 
 ### Minimal HTTP server
 
 This server runs embedded in a QuestDB instance by default and enables health
 checks of an instance via HTTP. It responds to all requests with a HTTP status
-code of `200` unless the QuestDB process dies.
+code of `200`, unless the QuestDB process dies.
 
 :::info
 
 Port `9003` also provides a `/metrics` endpoint with Prometheus metrics exposed.
-Examples of how to use the min server and Prometheus endpoint can be found on
-the [health monitoring page](/docs/operations/health-monitoring/).
+Examples of uding the min server and Prometheus endpoint are provided in
+[health monitoring page](/docs/operations/health-monitoring/).
 
 :::
 
@@ -187,43 +186,43 @@ the [health monitoring page](/docs/operations/health-monitoring/).
 | http.min.net.connection.limit   | 4            | Active connection limit                                                                                                                                                        |
 | http.min.net.connection.timeout | 300000       | Idle connection timeout is in milliseconds.                                                                                                                                        |
 | http.min.net.connection.hint    | false        | Windows specific flag to overcome OS limitations on TCP backlog size                                                                                                           |
-| http.min.worker.count           | -1           | By default, Minimal HTTP server uses shared thread pool for Core count 16 and below. It will use dedicated thread for Core count above 16. Do not set pool size to more than 1 |
+| http.min.worker.count           | -1           | By default, Minimal HTTP server uses shared thread pool for Core count 16 and below. It will use dedicated thread for a Core count above 16. Do not set pool size to more than 1 |
 | http.min.worker.affinity        | -1           | Core number to pin thread to                                                                                                                                                   |
 
 ### HTTP server
 
 This section describes configuration settings for the Web Console available by
-default on port `9000`. For details on the use of this component, refer to the
-[web console documentation](/docs/reference/web-console/) page.
+default on port `9000`. For details on the use of this component, see
+[web console documentation](/docs/reference/web-console/).
 
 | Property                                     | Default        | Description                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | -------------------------------------------- | -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | http.enabled                                 | true           | Enable or disable HTTP server.                                                                                                                                                                                                                                                                                                                                                                                                         |
-| http.bind.to                                 | 0.0.0.0:9000   | IP address and port of HTTP server. A value of `0` means that the HTTP server will bind to all network interfaces. You can specify IP address of any individual network interface on your system.                                                                                                                                                                                                                                      |
-| http.net.connection.limit                    | 256            | The number of simultaneous TCP connection to the HTTP server. The rationale of the value is to control server memory consumption.                                                                                                                                                                                                                                                                                                      |
-| http.net.connection.timeout                  | 300000         | TCP connection idle timeout in milliseconds. Connection is closed by HTTP server when this timeout lapses.                                                                                                                                                                                                                                                                                                                             |
+| http.bind.to                                 | 0.0.0.0:9000   | IP address and port of HTTP server. A value of `0` means that the HTTP server will bind to all network interfaces. You can specify the IP address of any individual network interface on your system.                                                                                                                                                                                                                                      |
+| http.net.connection.limit                    | 256            | The number of simultaneous TCP connections to the HTTP server. The rationale of the value is to control server memory consumption.                                                                                                                                                                                                                                                                                                      |
+| http.net.connection.timeout                  | 300000         | TCP connection idle timeout in milliseconds. The connection is closed by the HTTP server when this timeout lapses.                                                                                                                                                                                                                                                                                                                             |
 | http.net.connection.sndbuf                   | 2m             | Maximum send buffer size on each TCP socket. If this value is `-1`, the socket send buffer size remains unchanged from the OS defaults.                                                                                                                                                                                                                                                                                                |
 | http.net.connection.rcvbuf                   | 2m             | Maximum receive buffer size on each TCP socket. If this value is `-1`, the socket receive buffer size remains unchanged from the OS defaults.                                                                                                                                                                                                                                                                                          |
 | http.net.connection.hint                     | false          | Windows specific flag to overcome OS limitations on TCP backlog size                                                                                                                                                                                                                                                                                                                                                                   |
-| http.connection.pool.initial.capacity        | 16             | Initial size of pool of reusable objects that hold connection state. The pool should be configured to maximum realistic load so that it does not resize at runtime.                                                                                                                                                                                                                                                                    |
+| http.connection.pool.initial.capacity        | 16             | Initial size of pool of reusable objects that holds connection state. The pool should be configured to maximum realistic load so that it does not resize at runtime.                                                                                                                                                                                                                                                                    |
 | http.connection.string.pool.capacity         | 128            | Initial size of the string pool shared by the HTTP header and multipart content parsers.                                                                                                                                                                                                                                                                                                                                               |
 | http.multipart.header.buffer.size            | 512            | Buffer size in bytes used by the HTTP multipart content parser.                                                                                                                                                                                                                                                                                                                                                                        |
 | http.multipart.idle.spin.count               | 10_000         | How long the code accumulates incoming data chunks for column and delimiter analysis.                                                                                                                                                                                                                                                                                                                                                  |
 | http.receive.buffer.size                     | 1m             | Size of receive buffer.                                                                                                                                                                                                                                                                                                                                                                                                                |
-| http.request.header.buffer.size              | 64k            | Size of internal buffer allocated for HTTP request headers. The value is rounded up to the nearest power of 2. When HTTP requests contain headers that exceed the buffer size server will disconnect the client with HTTP error in server log.                                                                                                                                                                                         |
-| http.response.header.buffer.size             | 32k            | Size of the internal response buffer. The value will be rounded up to the nearest power of 2. The buffer size should be large enough to accommodate max size of server response headers.                                                                                                                                                                                                                                               |
-| http.worker.count                            | 0              | Number of threads in private worker pool. When value is 0, HTTP server will be using shared worker pool of the server. Values above 0 switch on private pool.                                                                                                                                                                                                                                                                          |
+| http.request.header.buffer.size              | 64k            | Size of internal buffer allocated for HTTP request headers. The value is rounded up to the nearest power of 2. When HTTP requests contain headers that exceed the buffer size, the server will disconnect the client with an HTTP error in the server log.                                                                                                                                                                                         |
+| http.response.header.buffer.size             | 32k            | Size of the internal response buffer. The value will be rounded up to the nearest power of 2. The buffer size should be large enough to accommodate the maximum size of the server response headers.                                                                                                                                                                                                                                               |
+| http.worker.count                            | 0              | Number of threads in the private worker pool. When the value is 0, the HTTP server uses the shared worker pool of the server. Values above 0 switch on the private pool.                                                                                                                                                                                                                                                                          |
 | http.worker.affinity                         |                | Comma separated list of CPU core indexes. The number of items in this list must be equal to the worker count.                                                                                                                                                                                                                                                                                                                          |
-| http.worker.haltOnError                      | false          | **Changing the default value is strongly discouraged**. Flag that indicates if worker thread must shutdown on unhandled error.                                                                                                                                                                                                                                                                                                         |
+| http.worker.haltOnError                      | false          | **Changing the default value is strongly discouraged**. Flag that indicates if a worker thread must shutdown when an unhandled error occurs.                                                                                                                                                                                                                                                                                                         |
 | http.send.buffer.size                        | 2m             | Size of the internal send buffer. Larger buffer sizes result in fewer I/O interruptions the server is making at the expense of memory usage per connection. There is a limit of send buffer size after which increasing it stops being useful in terms of performance. 2MB seems to be optimal value.                                                                                                                                  |
-| http.static.index.file.name                  | index.html     | Name of index file for the Web Console.                                                                                                                                                                                                                                                                                                                                                                                                |
-| http.frozen.clock                            | false          | Sets the clock to always return zero. This configuration parameter is used for internal testing.                                                                                                                                                                                                                                                                                                                                       |
+| http.static.index.file.name                  | index.html     | Name of the index file for the Web Console.                                                                                                                                                                                                                                                                                                                                                                                                |
+| http.frozen.clock                            | false          | Sets the clock to return zero. This configuration parameter is used for internal testing.                                                                                                                                                                                                                                                                                                                                       |
 | http.allow.deflate.before.send               | false          | Flag that indicates if Gzip compression of outgoing data is allowed.                                                                                                                                                                                                                                                                                                                                                                   |
-| http.keep-alive.timeout                      | 5              | Used together with `http.keep-alive.max` to set the value of HTTP `Keep-Alive` response header. This instructs browser to keep TCP connection open. Has to be `0` when `http.version` is set to `HTTP/1.0`.                                                                                                                                                                                                                            |
-| http.keep-alive.max                          | 10_000         | See `http.keep-alive.timeout`. Has to be `0` when `http.version` is set to `HTTP/1.0`.                                                                                                                                                                                                                                                                                                                                                 |
-| http.static.public.directory                 | public         | The name of directory for public web site.                                                                                                                                                                                                                                                                                                                                                                                             |
-| http.text.date.adapter.pool.capacity         | 16             | Size of date adapter pool. This should be set to the anticipated maximum number of `DATE` fields a text input can have. The pool is assigned to connection state and is reused alongside of connection state object.                                                                                                                                                                                                                   |
-| http.text.json.cache.limit                   | 16384          | JSON parser cache limit. Cache is used to compose JSON elements that have been broken up by TCP protocol. This value limits the maximum length of individual tag or tag value.                                                                                                                                                                                                                                                         |
+| http.keep-alive.timeout                      | 5              | Used together with `http.keep-alive.max` to set the HTTP `Keep-Alive` response header value. This instructs the browser to keep the TCP connection open, and has to be `0` when `http.version` is set to `HTTP/1.0`.                                                                                                                                                                                                                            |
+| http.keep-alive.max                          | 10_000         | See `http.keep-alive.timeout`. This has to be `0` when `http.version` is set to `HTTP/1.0`.                                                                                                                                                                                                                                                                                                                                                 |
+| http.static.public.directory                 | public         | Name of the directory for the public web site.                                                                                                                                                                                                                                                                                                                                                                                             |
+| http.text.date.adapter.pool.capacity         | 16             | Size of the date adapter pool. This should be set to the maximum number of `DATE` fields a text input can have. The pool is assigned to the connection state and is reused with the connection state object.                                                                                                                                                                                                                 |
+| http.text.json.cache.limit                   | 16384          | JSON parser cache limit. The cache is used to compose JSON elements that are broken by TCP. This value limits the maximum length of an individual tag or tag value.                                                                                                                                                                                                                                                         |
 | http.text.json.cache.size                    | 8192           | Initial size of JSON parser cache. The value must not exceed `http.text.json.cache.limit` and should be set to avoid cache resizes at runtime.                                                                                                                                                                                                                                                                                         |
 | http.text.max.required.delimiter.stddev      | 0.1222d        | The maximum standard deviation value for the algorithm that calculates text file delimiter. Usually when text parser cannot recognise the delimiter it will log the calculated and maximum standard deviation for the delimiter candidate.                                                                                                                                                                                             |
 | http.text.max.required.line.length.stddev    | 0.8            | Maximum standard deviation value for the algorithm that classifies input as text or binary. For the values above configured stddev input will be considered binary.                                                                                                                                                                                                                                                                    |
