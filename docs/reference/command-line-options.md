@@ -63,12 +63,9 @@ questdb.exe [start|stop|status|install|remove] \
 
 | Option | Description                                                                                                                                                                                                          |
 | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `-d`   | `dir` directory value. This folder is used as QuestDB's root directory. 
-For more information and the default values, see [Default root directory](#default-root-directory).         |
-| `-t`   | `tag` string value for the service. 
-If you specify a tag, it enables you to run several QuestDB services and manage them separately. If you omit this option, `questdb` is enabled as the default tag value. |
-| `-f`   | Force re-deploying the Web Console. 
-Without this option, the Web Console is cached and deployed only when missing.                                                                                                   |
+| `-d`   | `dir` directory value. This folder is used as QuestDB's root directory. For more information and the default values, see [Default root directory](#default-root-directory).         |
+| `-t`   | `tag` string value for the service. If you specify a tag, it enables you to run several QuestDB services and manage them separately. If you omit this option, `questdb` is enabled as the default tag value. |
+| `-f`   | Force re-deploying the Web Console. Without this option, the Web Console is cached and deployed only when missing. |
 | `-j`   | **Windows only!** If you enable this option, you can specify a path to `JAVA_HOME`.                                                                                                                                               |
 
 :::info
@@ -178,8 +175,7 @@ C:\Windows\System32\questdb
 
 | Option | Description                                                                                                        |
 | ------ | ------------------------------------------------------------------------------------------------------------------ |
-| `-t`   | `tag` string value to stop a service. 
-If you omit this option, `questdb` is enabled as the default tag value.|
+| `-t`   | `tag` string value to stop a service. If you omit this option, `questdb` is enabled as the default tag value.|
 
 <!-- prettier-ignore-start -->
 
