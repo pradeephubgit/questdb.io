@@ -3,14 +3,11 @@ title: Command-line options
 description: Command-line options reference documentation.
 ---
 
-QuestDB may be started, stopped and passed configuration options from the
-command line. On Windows, the QuestDB server can also start an
-[interactive session](#interactive-session-windows).
+From the command-line interface (CLI), you can start, stop, and pass configuration options to QuestDB. On Windows, you can also use the QuestDB server to start an [interactive session](#interactive-session-windows).
 
 ## Options
 
-The following sections describe the options that may be passed to QuestDB when
-starting the server from the command line.
+From the CLI, you can use the following options to configure the QuestDB server:
 
 <!-- prettier-ignore-start -->
 
@@ -66,18 +63,17 @@ questdb.exe [start|stop|status|install|remove] \
 
 | Option | Description                                                                                                                                                                                                          |
 | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `-d`   | Expects a `dir` directory value which is a folder that will be used as QuestDB's root directory. For more information and the default values, see the [default root](#default-root-directory) section below.         |
-| `-t`   | Expects a `tag` string value which will be as a tag for the service. This option allows users to run several QuestDB services and manage them separately. If this option is omitted, the default tag will be `questdb`. |
+| `-d`   | `dir` directory value. This folder is used as QuestDB's root directory. For more information and the default values, see [default root](#default-root-directory).         |
+| `-t`   | `tag` string value for the service. If you specify a tag, it enables you to run several QuestDB services and manage them separately. If you omit this option, `questdb` is enabled as the default tag value. |
 | `-f`   | Force re-deploying the Web Console. Without this option, the Web Console is cached and deployed only when missing.                                                                                                   |
-| `-j`   | **Windows only!** This option allows to specify a path to `JAVA_HOME`.                                                                                                                                               |
+| `-j`   | **Windows only!** If you enable this option, you can specify a path to `JAVA_HOME`.                                                                                                                                               |
 
 :::info
 
-When running multiple QuestDB services, a tag must be used to disambiguate
-between services for `start` and `stop` commands. There will be conflicting
-ports and root directories if only the tag flag is specified when starting
-multiple services. Each new service should have its own config file or should
-be started with separate port and root directory options.
+When you run multiple QuestDB services, use a tag for each service. If only
+one tag is specified for multiple services, it leads to port and root directory
+conflicts, especially with `start` and `stop` commands. Start each new service
+with a separate port and root directory, or create a unique config file for the service.
 
 :::
 
@@ -128,8 +124,7 @@ questdb.exe start [-d dir] [-f] [-j JAVA_HOME] [-t tag]
 
 #### Default root directory
 
-By default, QuestDB's [root directory](/docs/concept/root-directory-structure/)
-will be the following:
+QuestDB's default [root directory](/docs/concept/root-directory-structure/):
 
 <!-- prettier-ignore-start -->
 
@@ -180,7 +175,7 @@ C:\Windows\System32\questdb
 
 | Option | Description                                                                                                        |
 | ------ | ------------------------------------------------------------------------------------------------------------------ |
-| `-t`   | Expects a `tag` string value which to stop a service by tag. If this is omitted, the default tag will be `questdb` |
+| `-t`   | `tag` string value to stop a service. If you omit this option, `questdb` is enabled as the default tag value.|
 
 <!-- prettier-ignore-start -->
 
@@ -227,11 +222,7 @@ questdb.exe stop
 
 ### Status
 
-`status` - shows the status for a service.
-
-| Option | Description                                                                                                    |
-| ------ | -------------------------------------------------------------------------------------------------------------- |
-| `-t`   | Expects a `tag` string value which to stop a service by tag. If this is omitted, the default will be `questdb` |
+`status` - shows the status of a service.
 
 <!-- prettier-ignore-start -->
 
@@ -278,8 +269,7 @@ questdb.exe status
 
 ### Install (Windows)
 
-`install` - installs the Windows QuestDB service. The service will start
-automatically at startup.
+`install` - installs the Windows QuestDB service. The service starts automatically at startup.
 
 ```shell
 questdb.exe install
@@ -297,7 +287,7 @@ questdb.exe remove
 ## Interactive session (Windows)
 
 You can start QuestDB interactively by running `questdb.exe`. This will launch
-QuestDB interactively in the active `Shell` window. QuestDB will be stopped when
+QuestDB interactively in the active `Shell` window. QuestDB is stopped when
 the Shell is closed.
 
 ### Default root directory
