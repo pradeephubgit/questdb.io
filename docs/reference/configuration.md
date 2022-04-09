@@ -326,13 +326,13 @@ QuestDB.
 | cairo.writer.data.append.page.size             | 16M               | mmap sliding page size that table writer uses to append data for each column.                                                                                                                                           |
 | cairo.writer.data.index.key.append.page.size   | 512k              | mmap page size for appending index key data.                                                                                                                                                                             |
 | cairo.writer.data.index.value.append.page.size | 16M               | mmap page size for appending index value data.                                                                                                                                                                                 |
-| cairo.writer.misc.append.page.size             | 4k                | mmap page size for mapping small files. The default value is the OS page size (4k for Linux, 64K for Windows, and 16k for OSX [Apple M1 chip]). If you set a new value, ensure that it is a multiple of the default value. If not, the system rounds off the entered value to the nearest (greater) multiple of the default value.                                 |
-| cairo.writer.data.index.key.append.page.size   | 512k              | mmap page size for appending index key data; key data is number of distinct symbol values times 4 bytes.                                                                                                                 |
+| cairo.writer.misc.append.page.size             | 4k                | mmap page size for mapping small files. The default value is the OS page size (4k for Linux, 64K for Windows, and 16k for OSX [Apple M1 chip]). If you set a new value, it should be a multiple of the default value. If not, the system rounds off the entered value to the nearest (greater) multiple of the default value.                                 |
+| cairo.writer.data.index.key.append.page.size   | 512k              | mmap page size for appending index key data. Key data is the number of distinct symbol values (specified in cairo.default.symbol.capacity) times 4 bytes.                                                         |
 
 ### Postgres wire protocol
 
 This section describes configuration settings for client connections using
-PostgresSQL wire protocol.
+PostgreSQL wire protocol.
 
 | Property                         | Default      | Description                                                                                                                                                                                       |
 | -------------------------------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
