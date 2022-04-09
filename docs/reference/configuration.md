@@ -174,7 +174,7 @@ code of `200`, unless the QuestDB process dies.
 :::info
 
 Port `9003` also provides a `/metrics` endpoint with Prometheus metrics exposed.
-Examples of uding the min server and Prometheus endpoint are provided in
+Examples of using the min server and Prometheus endpoint are provided in
 [health monitoring page](/docs/operations/health-monitoring/).
 
 :::
