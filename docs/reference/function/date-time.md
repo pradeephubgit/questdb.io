@@ -17,8 +17,8 @@ Checking if tables contain a designated timestamp column can be done via the
 
 ## systimestamp
 
-`systimestamp()` - offset from UTC Epoch in microseconds. Calculates
-`UTC timestamp` using system's real time clock. The value is affected by
+`systimestamp()` - offset from UTC Epoch in microseconds. This calculates the
+`UTC timestamp` using the system's real time clock. The value is affected by
 discontinuous jumps in the system time (e.g., if the system administrator
 manually changes the system time).
 
@@ -46,7 +46,7 @@ VALUES(systimestamp(), 123.5);
 `sysdate()` - returns the timestamp of the host system as a `date` with
 `millisecond` precision.
 
-Calculates `UTC date` with millisecond precision using system's real time clock.
+This calculates the `UTC date` with millisecond precision using the system's real time clock.
 The value is affected by discontinuous jumps in the system time (e.g., if the
 system administrator manually changes the system time).
 
@@ -78,7 +78,7 @@ WHERE date_time > sysdate() - 60000000L;
 
 `now()` - offset from UTC Epoch in microseconds.
 
-Calculates `UTC timestamp` using system's real time clock. Unlike
+This calculates the `UTC timestamp` using the system's real time clock. Unlike
 `sysdatetime()`, it does not change within the query execution timeframe and
 should be used in WHERE clause to filter designated timestamp column relative to
 current time, i.e.:
