@@ -419,8 +419,7 @@ line protocol.
 ### Telemetry
 
 QuestDB sends anonymous telemetry data with information about usage which helps
-us improve the product over time. We do not collect any personally-identifying
-information, and we do not share any of this data with third parties.
+us improve the product over time. We do not collect any Personally Identifiable Information (PII), and we do not share any of this data with third parties.
 
 | Property          | Default | Description                                           |
 | ----------------- | ------- | ----------------------------------------------------- |
@@ -457,7 +456,7 @@ overridden via a "system" property: `-Dout=/something_else.conf`.
 
 Values in the log configuration file can be overridden with environment
 variables. All configuration keys must be formatted as described in the
-[environment variables](#environment-variables) section above.
+[environment variables](#environment-variables) section.
 
 For example, to set logging on `ERROR` level only:
 
@@ -512,7 +511,7 @@ QuestDB includes a log writer that sends any message logged at critical level
 Details for configuring this can be found in the
 [Prometheus documentation](/docs/third-party-tools/prometheus/).
 
-To configure this writer, add it to the `writers` config alongside other log
+To configure this writer, add it to the `writers` config with other log
 writers.
 
 ```bash title="log.conf"
@@ -540,8 +539,8 @@ w.alert.outBufferSize=4M
 w.alert.reconnectDelay=250
 ```
 
-Of all properties, only `w.alert.class` and `w.alert.level` are required, the
-rest assume default values as stated above (except for `w.alert.alertTargets`
+Of all the properties, only `w.alert.class` and `w.alert.level` are required, and the
+rest assume default values as stated above (except `w.alert.alertTargets`
 which is empty by default).
 
 Alert targets are specified using `w.alert.alertTargets` as a comma-separated
@@ -590,7 +589,7 @@ Four environment variables can be defined, and referred to with the
 - _CLUSTER_NAME_
 - _INSTANCE_NAME_
 
-Their default value is `GLOBAL`, they mean nothing outside a cloud environment.
+Their default value is `GLOBAL`, and they mean nothing outside a cloud environment.
 
 In addition, `ALERT_MESSAGE` is a placeholder for the actual `critical` message
 being sent, and `QDB_VERSION` is the runtime version of the QuestDB instance
