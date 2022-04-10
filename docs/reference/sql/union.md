@@ -11,7 +11,7 @@ work properly, ensure the following:
 
 - Each select statement returns the same number of columns
 - Columns are in the same order
-- Each column has the same type
+- Each column should be of the same type
 
 ## Syntax
 
