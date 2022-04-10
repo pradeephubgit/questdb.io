@@ -10,7 +10,7 @@ Sort the results of a query in ascending or descending order.
 
 ![Flow chart showing the syntax of the ORDER BY keyword](/img/docs/diagrams/orderBy.svg)
 
-Default order is `ASC`. You can omit to order in ascending order.
+By default, the order is `ASC`. If you don't specify any order, the results are displayed in ascending order.
 
 ## Examples
 
@@ -26,11 +26,11 @@ ratings ORDER BY userId DESC;
 ratings ORDER BY userId, rating DESC;
 ```
 
-## Resources management
+## Resource management
 
 :::caution
 
-Ordering data requires holding it in RAM. For large operations, we suggest you
-check you have sufficient memory to perform the operation.
+Since ordering requires holding the data in RAM, check if you have sufficient memory
+when performing large operations.
 
 :::
