@@ -41,7 +41,7 @@ passed in order to produce deterministic results.
 
 :::info
 
-Deterministic procedural generation makes it easy to test on vast amounts of
+Deterministic procedural generation makes it easy to test vast amounts of
 data without moving large files around, across machines. Using the same
 seed on any machine at any time will consistently produce the same results for
 all random functions.
