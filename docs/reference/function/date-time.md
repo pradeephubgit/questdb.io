@@ -385,7 +385,7 @@ see [Timestamps and time zones](/docs/guides/working-with-timestamps-timezones/)
 
 - `timestamp` is any `timestamp`, such as a Unix timestamp or a string equivalent
 - `timezone` may be a `Country/City` time zone database name, a time zone abbreviation such
-  as `PST` or a UTC offset in string format.
+  as `PST`, or a UTC offset in string format.
 
 **Return value:**
 
@@ -425,17 +425,16 @@ SELECT to_timezone('2021-06-08T13:45:45.000000Z', 'PST')
 
 ## to_utc
 
-`to_utc(timestamp, timezone)` - converts a timestamp by specified timezone to
-UTC. May be provided a timezone in string format or a UTC offset in hours and
+`to_utc(timestamp, timezone)` - converts a timestamp by the specified timezone to UTC.
+You can provide a timezone in string format, or a UTC offset in hours and
 minutes. For more information on the time zone database used for this function,
-see the
-[QuestDB time zone database documentation](/docs/guides/working-with-timestamps-timezones/).
+see [Timestamps and time zones](/docs/guides/working-with-timestamps-timezones/).
 
 **Arguments:**
 
-- `timestamp` is any `timestamp` as Unix timestamp or string equivalent
-- `timezone` may be `Country/City` tz database name, time zone abbreviation such
-  as `PST` or a UTC offset in string format.
+- `timestamp` is any `timestamp` as a Unix timestamp or a string equivalent
+- `timezone` may be a `Country/City` time zone database name, a time zone abbreviation such
+  as `PST`, or a UTC offset in string format.
 
 **Return value:**
 
@@ -443,8 +442,7 @@ Return value type is `timestamp`
 
 **Examples:**
 
-- Convert a Unix timestamp in microseconds from the `Europe/Berlin` timezone to
-  UTC
+- Convert a Unix timestamp in microseconds from the `Europe/Berlin` timezone to UTC
 
 ```questdb-sql
 SELECT to_utc(1623167145000000, 'Europe/Berlin')
@@ -480,10 +478,10 @@ SELECT to_utc('2021-06-08T13:45:45.000000Z', 'PST')
 
 **Arguments:**
 
-- `period` is a char. Period to be added. Available periods are `s`, `m`, `h`,
-  `d`, `M`, `y`.
-- `n` is an int. Number of periods to add.
-- `startDate` is a timestamp or date. Timestamp to add the periods to.
+- `period` is a char which has to be added. The available values are `s`, `m`, `h`,
+  `d`, `M`, and `y`.
+- `n` is an int which refers to the number of periods to add.
+- `startDate` is the timestamp or date. The specified periods are added to the timestamp. 
 
 **Return value:**
 
@@ -527,7 +525,7 @@ between `date1` and `date2`.
 
 - `period` is a char. Period to be added. Available periods are `s`, `m`, `h`,
   `d`, `M`, `y`.
-- `date1` and `date2` are date or timestamp. Dates to compare
+- `date1` and `date2` are date or timestamp. These dates are compared, and the query's result is returned. 
 
 **Return value:**
 
@@ -562,7 +560,7 @@ FROM long_sequence(1);
 ## millis
 
 `millis(value)` - returns the `millis` of the second for a given date or
-timestamp from `0` to `999`
+timestamp, from `0` to `999`
 
 **Arguments:**
 
@@ -960,9 +958,9 @@ SELECT to_str(ts,'EE'),day_of_week_sunday_first(ts) FROM myTable;
 
 ## Date and Timestamp format
 
-Format is a combination of letters from table below combined with arbitrary
-text. Format letters are case-sensitive and are used as is (e.g. without any
-prefix)
+Format is a combination of letters (from the table below) combined with arbitrary
+text. The format letters are case-sensitive, and are used as-is (e.g. without any
+prefix).
 
 | Letter | Date or Time Component                           | Presentation       | Examples                              |
 | ------ | ------------------------------------------------ | ------------------ | ------------------------------------- |
