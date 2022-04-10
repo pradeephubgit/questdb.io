@@ -361,7 +361,7 @@ PostgreSQL (or Postgres) wire protocol.
 | pg.timestamp.locale              | en           | Locale to handle timestamp types.                                                                                                                                                             |
 | pg.worker.count                  | 2            | Number of dedicated worker threads assigned to write data. If you set it to `0`, the writer jobs will use the shared pool.                                                                                    |
 | pg.worker.affinity               | -1,-1        | Comma-separated list of thread numbers which should be pinned for Postgres ingestion. For example, `line.tcp.worker.affinity=1,2,3`.                                                                   |
-| pg.halt.on.error                 | false        | Decision. This is a flag to decide if data ingestion should stop when an internal error occurs.                                                                                                                                                |
+| pg.halt.on.error                 | false        | This is a flag to decide if data ingestion should stop when an internal error occurs.                                                                                                                                                |
 
 ### InfluxDB line protocol
 
