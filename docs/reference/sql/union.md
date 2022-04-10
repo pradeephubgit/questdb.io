@@ -7,11 +7,11 @@ description: UNION SQL keyword reference documentation.
 ## Overview
 
 `UNION` is used to combine the results of two or more `SELECT` statements. To
-work properly:
+work properly, ensure the following:
 
-- Each select statement should return the same number of column
-- Each column should have the same type
-- Columns should be in the same order
+- Each select statement returns the same number of columns
+- Columns are in the same order
+- Each column has the same type
 
 ## Syntax
 
@@ -22,7 +22,9 @@ work properly:
 
 ## Examples
 
-Let's assume the following two tables listA
+Consider two tables, listA and listB, shown below.
+
+listA
 
 | Description | ID  |
 | ----------- | --- |
