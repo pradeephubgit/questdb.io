@@ -2,19 +2,20 @@
 title: Geospatial data
 description:
   This document describes how to work with geohashes as geospatial types in
-  QuestDB, including hints on converting back and forth from latitude and
-  longitude, inserting via SQL, InfluxDB line protocol, CSV, and more.
+  QuestDB, including tips on converting back and forth from latitude and
+  longitude, inserting through SQL, InfluxDB line protocol, CSV, and more.
 ---
 
-QuestDB adds support for working with geospatial data through a `geohash` type.
-This page describes how to use geohashes, with an overview of the syntax,
-including hints on converting from latitude and longitude, inserting via SQL,
-InfluxDB line protocol, and via Java embedded API.
+QuestDB adds support for geospatial data through the `geohash` type. This page 
+provides these details:
 
-To facilitate working with this data type,
+- Geohash usage, including its syntax 
+- Converting latitude and longitude information to a more precise form 
+- Inserting data through SQL, InfluxDB line protocol (ILP), and Java embedded API. 
+
+For more information on filtering and generating data using geohashes, see
 [spatial functions](/docs/reference/function/spatial/) and
-[operators](/docs/reference/operators/spatial/) have been added to help with
-filtering and generating data.
+[operators](/docs/reference/operators/spatial/). 
 
 ## Geohash description
 
