@@ -5,20 +5,20 @@ description: Spatial operators reference documentation.
 ---
 
 This page describes the available operators to assist with performing spatial
-calculations. For more information on this type of data, see the
-[geohashes documentation](/docs/concept/geohashes/) and the
-[spatial functions](/docs/reference/function/spatial/) which have been added to
-help with filtering and generating data.
+calculations. For more information on this type of data, see
+[geohashes documentation](/docs/concept/geohashes/) and
+[spatial functions](/docs/reference/function/spatial/) which are added to
+help with filtering and generating data. 
 
 ## within
 
 `within(geohash, ...)` - evaluates if a comma-separated list of geohashes are
-equal to are within another geohash.
+equal to, or within, another geohash.
 
 :::info
 
-- The `within` operator can only be used in `LATEST BY` queries and all symbol
-  columns within the query **must be indexed**.
+- The `within` operator can only be used in `LATEST ON` queries and all symbol
+columns within the query **must be indexed**.
 
 - Only **geohash literals** (`#ezzn5kxb`) are supported as opposed to geohashes
   passed as strings (`'ezzn5kxb'`).
@@ -36,7 +36,7 @@ equal to are within another geohash.
 
 **Examples:**
 
-Given a table with the following contents:
+Given a table with the following contents ..
 
 | ts                          | device_id | g1c | g8c      |
 | --------------------------- | --------- | --- | -------- |
@@ -44,7 +44,7 @@ Given a table with the following contents:
 | 2021-09-02T14:20:08.241489Z | device_1  | u   | u33w4r2w |
 | 2021-09-02T14:20:08.241489Z | device_3  | u   | u33d8b1b |
 
-The `within` operator can be used to filter results by geohash:
+.. the `within` operator can be used to filter results by geohash:
 
 ```questdb-sql
 SELECT * FROM pos

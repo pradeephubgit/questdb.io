@@ -7,11 +7,11 @@ description: UNION SQL keyword reference documentation.
 ## Overview
 
 `UNION` is used to combine the results of two or more `SELECT` statements. To
-work properly:
+work properly, ensure the following:
 
-- Each select statement should return the same number of column
-- Each column should have the same type
-- Columns should be in the same order
+- Each select statement returns the same number of columns
+- Columns are in the same order
+- Each column should be of the same type
 
 ## Syntax
 
@@ -22,7 +22,9 @@ work properly:
 
 ## Examples
 
-Let's assume the following two tables listA
+Consider two tables, listA and listB, shown below.
+
+listA
 
 | Description | ID  |
 | ----------- | --- |
@@ -39,7 +41,7 @@ listB
 | Green Pen   | 3   |
 
 ```questdb-sql
-liastA UNION listB
+listA UNION listB
 ```
 
 will return
@@ -53,7 +55,7 @@ will return
 | Black Pen   | 2   |
 
 ```questdb-sql
-liastA UNION ALL listB
+listA UNION ALL listB
 ```
 
 will return

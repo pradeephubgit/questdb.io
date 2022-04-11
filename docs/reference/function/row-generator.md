@@ -4,10 +4,11 @@ sidebar_label: Row generator
 description: Row generator function reference documentation.
 ---
 
-The `long_sequence()` function may be used as a row generator to create table
-data for testing. Basic usage of this function involves providing the number of
-iterations required. Deterministic pseudo-random behavior can be achieved by
-providing seed values when calling the function.
+Use the `long_sequence()` function for testing purposes. You can create
+table data, provide the number of iterations for testing, and generate
+rows with very large datasets, such as billions of rows. You can provide
+seed values when calling the function, and achieve deterministic 
+pseudo-random behavior.
 
 This function is commonly used in combination with
 [random generator functions](/docs/reference/function/random-value-generator/)
@@ -20,33 +21,30 @@ to produce mock data.
 
 **Arguments:**
 
--`iterations`: is a `long` representing the number of rows to generate. -`seed1`
-and `seed2` are `long64` representing both parts of a `long128` seed.
+- `iterations`: is a `long` representing the number of rows to generate. 
+- `seed1` and `seed2` are `long64` representing both parts of a `long128` seed. 
 
 ### Row generation
 
-The `long_sequence()` function can be used to generate very large datasets for
-testing e.g. billions of rows.
+`long_sequence(iterations)` is used to generate the following:
 
-`long_sequence(iterations)` is used to:
-
-- Generate a number of rows defined by `iterations`.
-- Generate a column `x:long` of monotonically increasing long integers starting
+- A number of rows defined by `iterations`.
+- A column `x:long` of monotonically increasing long integers starting
   from 1, which can be accessed for queries.
 
 ### Random number seed
 
 When `long_sequence` is used conjointly with
-[random generators](/docs/reference/function/random-value-generator/), these
-values are usually generated at random. The function supports a seed to be
+[random generators](/docs/reference/function/random-value-generator/), the
+values are generated at random. The function supports a seed to be
 passed in order to produce deterministic results.
 
 :::info
 
-Deterministic procedural generation makes it easy to test on vasts amounts of
-data without actually moving large files around across machines. Using the same
-seed on any machine at any time will consistently produce the same results for
-all random functions.
+Deterministic procedural generation makes it easy to test vast amounts of
+data without moving large files across machines. Using the same seed on
+any machine, at any time, consistently produces the same results for all
+random functions.
 
 :::
 
@@ -86,7 +84,7 @@ FROM long_sequence(2,128349234,4327897);
 :::note
 
 The results below will be the same on any machine at any time as long as they
-use the same seed in long_sequence.
+use the same seed in `long_sequence`.
 
 :::
 

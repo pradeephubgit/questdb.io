@@ -4,7 +4,7 @@ sidebar_label: SELECT
 description: SELECT SQL keyword reference documentation.
 ---
 
-`SELECT` allows you to specify list of columns and expressions to be selected
+`SELECT` allows you to specify a list of columns and expressions to be selected
 and evaluated from a table.
 
 ## Syntax
@@ -13,7 +13,7 @@ and evaluated from a table.
 
 :::tip
 
-The `TABLE` can either be a in your database (in which case you would pass the
+The `TABLE` can either be in your database (in which case you would pass the
 table's name), or the result of a sub query.
 
 :::
@@ -22,8 +22,8 @@ table's name), or the result of a sub query.
 
 ### All columns
 
-QuestDB supports `SELECT * FROM tablename`. When selecting all, you can also
-omit most of the statement and pass the table name.
+QuestDB supports `SELECT * FROM tablename`. When selecting all columns, you can
+omit most part of the statement and pass the table name.
 
 The two examples below are equivalent
 
@@ -37,8 +37,7 @@ SELECT * FROM ratings;
 
 ### Specific columns
 
-To select specific columns, replace \* by the names of the columns you are
-interested in.
+To select specific columns, replace \* with the column names.
 
 Example:
 
@@ -62,9 +61,9 @@ take values true or false.
 
 ### Aliases
 
-Using aliases allow you to give expressions or column names of your choice. You
+Using aliases allows you to give expressions or column names of your choice. You
 can assign an alias to a column or an expression by writing the alias name you
-want after that expression
+want after that expression.
 
 :::note
 
@@ -88,10 +87,9 @@ Supported aggregation functions are listed on the
 
 ### Aggregation by group
 
-QuestDB evaluates aggregation functions without need for traditional `GROUP BY`.
+QuestDB evaluates aggregation functions without a need for traditional `GROUP BY`.
 Use a mix of column names and aggregation functions in a `SELECT` clause. You
-can have any number of discrete value columns and any number of aggregation
-functions.
+can have any number of discrete value columns and aggregation functions.
 
 ```questdb-sql title="QuestDB dialect"
 SELECT movieId, avg(rating), count()
@@ -119,7 +117,7 @@ FROM ratings;
 Whenever possible, it is recommended to perform arithmetic `outside` of
 aggregation functions as this can have a dramatic impact on performance. For
 example, `min(value/2)` is going to execute considerably slower than
-`min(value)/2` although both alternative will return the same result
+`min(value)/2` although both alternatives will return the same result
 
 :::
 
@@ -235,7 +233,7 @@ For more information, please refer to the
 
 ### UNION
 
-Combine the results of two or more select statements. Can include or ignore
+Combine the results of two or more select statements. You can include or ignore
 duplicates.
 
 #### Syntax
@@ -272,11 +270,11 @@ more information, please refer to the
 
 QuestDB augments SQL with the following clauses.
 
-### LATEST BY
+### LATEST ON
 
-Retrieves the latest entry by timestamp for a given key or combination of keys
-This function requires a
-[designated timestamp](/docs/concept/designated-timestamp/).
+Retrieves the most recent records per unique time series identified by the PARTITION BY column values.
+To use `LATEST ON`, a timestamp column used in the `LATEST ON` part needs to be specified as a designated timestamp.
+Also, `LATEST ON` has to follow the WHERE clause.
 
 #### Syntax
 
@@ -291,8 +289,8 @@ For more information, please refer to the
 
 ### SAMPLE BY
 
-Aggregates time series data into homogeneous time chunks. For example daily
-average, monthly maximum etc. This function requires a
+Aggregates time series data into homogeneous time chunks. For example, daily
+average, monthly maximum, etc. This function requires a
 [designated timestamp](/docs/concept/designated-timestamp/).
 
 #### Syntax

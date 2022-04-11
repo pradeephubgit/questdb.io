@@ -4,21 +4,20 @@ sidebar_label: Date and time
 description: Date and time functions reference documentation.
 ---
 
-This page describes the available functions to assist with performing time-based
-calculations.
+This page describes the available functions for performing time-based calculations.
 
 :::info
 
 Checking if tables contain a designated timestamp column can be done via the
-`tables()` and `table_columns()` functions which are described in the
-[meta functions](/docs/reference/function/meta/) documentation page.
+`tables()` and `table_columns()` functions which are described in
+[meta functions](/docs/reference/function/meta/).
 
 :::
 
 ## systimestamp
 
-`systimestamp()` - offset from UTC Epoch in microseconds. Calculates
-`UTC timestamp` using system's real time clock. The value is affected by
+`systimestamp()` - offset from UTC Epoch in microseconds. This calculates the
+`UTC timestamp` using the system's real time clock. The value is affected by
 discontinuous jumps in the system time (e.g., if the system administrator
 manually changes the system time).
 
@@ -46,7 +45,7 @@ VALUES(systimestamp(), 123.5);
 `sysdate()` - returns the timestamp of the host system as a `date` with
 `millisecond` precision.
 
-Calculates `UTC date` with millisecond precision using system's real time clock.
+This calculates the `UTC date` with millisecond precision using the system's real time clock.
 The value is affected by discontinuous jumps in the system time (e.g., if the
 system administrator manually changes the system time).
 
@@ -78,14 +77,14 @@ WHERE date_time > sysdate() - 60000000L;
 
 `now()` - offset from UTC Epoch in microseconds.
 
-Calculates `UTC timestamp` using system's real time clock. Unlike
+This calculates the `UTC timestamp` using the system's real time clock. Unlike
 `sysdatetime()`, it does not change within the query execution timeframe and
-should be used in WHERE clause to filter designated timestamp column relative to
+should be used in the WHERE clause to filter the designated timestamp column relative to
 current time, i.e.:
 
-- `SELECT now() FROM long_sequence(200)` will return the same timestamp for all
+- `SELECT now() FROM long_sequence(200)` returns the same timestamp for all
   rows
-- `SELECT systimestamp() FROM long_sequence(200)` will have new timestamp values
+- `SELECT systimestamp() FROM long_sequence(200)` returns new timestamp values
   for each row
 
 **Arguments:**
@@ -98,7 +97,7 @@ Return value type is `timestamp`.
 
 **Examples:**
 
-```questdb-sql title="Filter records to created within last day"
+```questdb-sql title="Filter records created within last day"
 SELECT created, origin FROM telemetry
 WHERE created > dateadd('d', -1, now());
 ```
@@ -125,7 +124,7 @@ WHERE date_time > now() - 60000000L;
 ## timestamp_ceil
 
 `timestamp_ceil(unit, timestamp)` - performs a ceiling calculation on a
-timestamp by given unit.
+timestamp for the specified unit.
 
 A unit must be provided to specify which granularity to perform rounding.
 
@@ -172,7 +171,7 @@ SELECT
 ## timestamp_floor
 
 `timestamp_floor(unit, timestamp)` - performs a floor calculation on a timestamp
-by given unit.
+for the specified unit.
 
 A unit must be provided to specify which granularity to perform rounding.
 
@@ -221,11 +220,11 @@ SELECT
 `to_timestamp(string, format)` - converts string to `timestamp` by using the
 supplied `format` to extract the value.
 
-Will convert a `string` to `timestamp` using the format definition passed as an
+This converts a `string` to `timestamp` using the format definition passed as an
 argument. When the `format` definition does not match the `string` input, the
 result will be `null`.
 
-For more information about recognized timestamp formats, see the
+For more information about recognized timestamp formats, see
 [date and timestamp format section](#date-and-timestamp-format).
 
 **Arguments:**
@@ -267,7 +266,7 @@ FROM long_sequence(1);
 | ------------ |
 | null         |
 
-```questdb-sql title="Using with INSERT"
+```questdb-sql title="Used with INSERT"
 INSERT INTO measurements
 values(to_timestamp('2019-12-12T12:15', 'yyyy-MM-ddTHH:mm'), 123.5);
 ```
@@ -287,7 +286,7 @@ offset `+01:00` or `Z`. See more examples at
 `to_date(string, format)` - converts string to `date` by using the supplied
 `format` to extract the value.
 
-Will convert a `string` to `date` using the format definition passed as an
+This converts a `string` to `date` using the format definition passed as an
 argument. When the `format` definition does not match the `string` input, the
 result will be `null`.
 
@@ -338,9 +337,9 @@ values(to_date('2019-12-12T12:15', 'yyyy-MM-ddTHH:mm'), 123.5);
 `to_str(value, format)` - converts date or timestamp value to a string in the
 specified format
 
-Will convert a date or timestamp value to a string using the format definition
+This converts a date or timestamp value to a string using the format definition
 passed as an argument. When elements in the `format` definition are
-unrecognized, they will be passed-through as string.
+unrecognized, they are passed-through as a string.
 
 For more information about recognized timestamp formats, see the
 [date and timestamp format section](#date-and-timestamp-format).
@@ -380,14 +379,13 @@ SELECT to_str(systimestamp(), 'yyyy-MM-dd gooD DAY 123') FROM long_sequence(1);
 
 `to_timezone(timestamp, timezone)` - converts a timestamp value to a specified
 timezone. For more information on the time zone database used for this function,
-see the
-[QuestDB time zone database documentation](/docs/guides/working-with-timestamps-timezones/).
+see [Timestamps and time zones](/docs/guides/working-with-timestamps-timezones/).
 
 **Arguments:**
 
-- `timestamp` is any `timestamp` as Unix timestamp or string equivalent
-- `timezone` may be `Country/City` tz database name, time zone abbreviation such
-  as `PST` or in UTC offset in string format.
+- `timestamp` is any `timestamp`, such as a Unix timestamp or a string equivalent
+- `timezone` may be a `Country/City` time zone database name, a time zone abbreviation such
+  as `PST`, or a UTC offset in string format.
 
 **Return value:**
 
@@ -427,17 +425,16 @@ SELECT to_timezone('2021-06-08T13:45:45.000000Z', 'PST')
 
 ## to_utc
 
-`to_utc(timestamp, timezone)` - converts a timestamp by specified timezone to
-UTC. May be provided a timezone in string format or a UTC offset in hours and
+`to_utc(timestamp, timezone)` - converts a timestamp by the specified timezone to UTC.
+You can provide a timezone in string format, or a UTC offset in hours and
 minutes. For more information on the time zone database used for this function,
-see the
-[QuestDB time zone database documentation](/docs/guides/working-with-timestamps-timezones/).
+see [Timestamps and time zones](/docs/guides/working-with-timestamps-timezones/).
 
 **Arguments:**
 
-- `timestamp` is any `timestamp` as Unix timestamp or string equivalent
-- `timezone` may be `Country/City` tz database name, time zone abbreviation such
-  as `PST` or in UTC offset in string format.
+- `timestamp` is any `timestamp` as a Unix timestamp or a string equivalent
+- `timezone` may be a `Country/City` time zone database name, a time zone abbreviation such
+  as `PST`, or a UTC offset in string format.
 
 **Return value:**
 
@@ -445,8 +442,7 @@ Return value type is `timestamp`
 
 **Examples:**
 
-- Convert a Unix timestamp in microseconds from the `Europe/Berlin` timezone to
-  UTC
+- Convert a Unix timestamp in microseconds from the `Europe/Berlin` timezone to UTC
 
 ```questdb-sql
 SELECT to_utc(1623167145000000, 'Europe/Berlin')
@@ -466,7 +462,7 @@ SELECT to_utc(1623167145000000, '-08:00')
 | --------------------------- |
 | 2021-06-08T23:45:45.000000Z |
 
-- Timestamp as string in `PST` to UTC
+- Timestamp as a string in `PST` to UTC
 
 ```questdb-sql
 SELECT to_utc('2021-06-08T13:45:45.000000Z', 'PST')
@@ -482,10 +478,10 @@ SELECT to_utc('2021-06-08T13:45:45.000000Z', 'PST')
 
 **Arguments:**
 
-- `period` is a char. Period to be added. Available periods are `s`, `m`, `h`,
-  `d`, `M`, `y`.
-- `n` is an int. Number of periods to add.
-- `startDate` is a timestamp or date. Timestamp to add the periods to.
+- `period` is a char which has to be added. The available values are `s`, `m`, `h`,
+  `d`, `M`, and `y`.
+- `n` is an int which refers to the number of periods to add.
+- `startDate` is the timestamp or date. The specified periods are added to the timestamp. 
 
 **Return value:**
 
@@ -529,7 +525,7 @@ between `date1` and `date2`.
 
 - `period` is a char. Period to be added. Available periods are `s`, `m`, `h`,
   `d`, `M`, `y`.
-- `date1` and `date2` are date or timestamp. Dates to compare
+- `date1` and `date2` are date or timestamp. These dates are compared, and the query's result is returned. 
 
 **Return value:**
 
@@ -564,7 +560,7 @@ FROM long_sequence(1);
 ## millis
 
 `millis(value)` - returns the `millis` of the second for a given date or
-timestamp from `0` to `999`
+timestamp, from `0` to `999`
 
 **Arguments:**
 
@@ -962,9 +958,9 @@ SELECT to_str(ts,'EE'),day_of_week_sunday_first(ts) FROM myTable;
 
 ## Date and Timestamp format
 
-Format is a combination of letters from table below combined with arbitrary
-text. Format letters are case-sensitive and are used as is (e.g. without any
-prefix)
+Format is a combination of letters (from the table below) combined with arbitrary
+text. The format letters are case-sensitive, and are used as-is (e.g. without any
+prefix).
 
 | Letter | Date or Time Component                           | Presentation       | Examples                              |
 | ------ | ------------------------------------------------ | ------------------ | ------------------------------------- |

@@ -2,19 +2,20 @@
 title: Geospatial data
 description:
   This document describes how to work with geohashes as geospatial types in
-  QuestDB, including hints on converting back and forth from latitude and
-  longitude, inserting via SQL, InfluxDB line protocol, CSV, and more.
+  QuestDB, including tips on converting back and forth from latitude and
+  longitude, inserting through SQL, InfluxDB line protocol, CSV, and more.
 ---
 
-QuestDB adds support for working with geospatial data through a `geohash` type.
-This page describes how to use geohashes, with an overview of the syntax,
-including hints on converting from latitude and longitude, inserting via SQL,
-InfluxDB line protocol, and via Java embedded API.
+QuestDB adds support for geospatial data through the `geohash` type. This page 
+provides these details:
 
-To facilitate working with this data type,
+- Geohash usage, including its syntax 
+- Converting latitude and longitude information to a more precise form 
+- Inserting data through SQL, InfluxDB line protocol (ILP), and Java embedded API. 
+
+For more information on filtering and generating data using geohashes, see
 [spatial functions](/docs/reference/function/spatial/) and
-[operators](/docs/reference/operators/spatial/) have been added to help with
-filtering and generating data.
+[operators](/docs/reference/operators/spatial/). 
 
 ## Geohash description
 
@@ -31,9 +32,9 @@ In order to be compact, [base32](https://en.wikipedia.org/wiki/Base32#Geohash)
 is used as a representation of Geohashes, and are therefore comprised of:
 
 - all decimal digits (0-9) and
-- almost all of the alphabet (case-insensitive) **except "a", "i", "l", "o"**.
+- almost all of the alphabet (case-insensitive) **except "a", "i", "l",** and **"o"**.
 
-The followng figure illustrates how increasing the length of a geohash results
+The following figure illustrates how increasing the length of a geohash results
 in a higher-precision grid size:
 
 import Screenshot from "@theme/Screenshot"
@@ -187,7 +188,7 @@ INSERT INTO my_geo_data values(#u, #u33d8b12);
 ```
 
 Larger-precision geohashes are truncated when inserted into smaller-precision
-columns, and inserting smaller-precision geohases into larger-precision columns
+columns, and inserting smaller-precision geohashes into larger-precision columns
 produces an error, i.e.:
 
 ```questdb-sql
@@ -273,7 +274,7 @@ equal to or is within a larger grid. The following query will return the most
 recent entries by device ID if the `g8c` column contains a geohash within
 `u33d`:
 
-```questdb-sql title="LATEST BY usage"
+```questdb-sql title="LATEST ON usage"
 SELECT * FROM geo_data
 WHERE g8c within(#u33d)
 LATEST ON ts PARTITION BY device_id;
@@ -281,7 +282,7 @@ LATEST ON ts PARTITION BY device_id;
 
 :::info
 
-The `within` operator can only be applied in `LATEST BY` queries and all symbol
+The `within` operator can only be applied in `LATEST ON` queries and all symbol
 columns within the query **must be indexed**.
 
 :::
@@ -296,7 +297,7 @@ For more information on the use of this operator, see the
 
 ## Java embedded usage
 
-Inserting geohashes into tables via Java (embedded) QuestDB instance through the
+You can insert geohashes into tables through Java (embedded) QuestDB instance through the
 `TableWriter`'s `putGeoHash` method which accepts `LONG` values natively with
 the destination precision. Additionally, `GeoHashes.fromString` may be used for
 string conversion, but comes with some performance overhead as opposed to `long`
@@ -318,7 +319,7 @@ try (TableWriter writer = engine.getWriter(ctx.getCairoSecurityContext(), "geoha
 
 ```
 
-Reading geohashes via Java is done by means of the following methods:
+Reading geohashes through Java is done by means of the following methods:
 
 - `Record.getGeoByte(columnIndex)`
 - `Record.getGeoShort(columnIndex)`
@@ -342,10 +343,10 @@ Invoking the method above will return one of the following:
 For more information and detailed examples of using table readers and writers,
 see the [Java API documentation](/docs/reference/api/java-embedded/).
 
-## InfluxDB line protocol
+## ILP
 
-Geohashes may also be inserted via InfluxDB line protocol. In order to perform
-inserts in this way;
+Geohashes may also be inserted through ILP. The required steps 
+are given below.
 
 1. Create table with columns of geohash type beforehand:
 
@@ -353,7 +354,7 @@ inserts in this way;
 CREATE TABLE tracking (ts timestamp, geohash geohash(8c));
 ```
 
-2. Inserts via InfluxDB line protocol using the `geohash` field:
+2. Insert through ILP using the `geohash` field:
 
 ```bash
 tracking geohash="46swgj10"
@@ -361,11 +362,11 @@ tracking geohash="46swgj10"
 
 :::info
 
-The InfluxDB Line Protocol parser does not support geohash literals, only
-strings. This means that table columns of type `geohash` type with the desired
+The ILP parser does not support geohash literals, but only supports
+strings. This means that table columns of the type `geohash` with the desired
 precision must exist before inserting rows with this protocol.
 
-If a value cannot be converted or is omitted it will be set as `NULL`
+If a value cannot be converted or is omitted, it will be set as `NULL`
 
 :::
 
@@ -389,7 +390,7 @@ insert and query geohashes:
 :::info
 
 When querying geohash values over Postgres wire protocol, QuestDB always returns
-geohashes in text mode (i.e. as strings) as opposed to binary
+geohashes in text mode (i.e. as strings) as opposed to binary mode.
 
 :::
 
