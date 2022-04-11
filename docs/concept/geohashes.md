@@ -297,7 +297,7 @@ For more information on the use of this operator, see the
 
 ## Java embedded usage
 
-You can insert geohashes into tables via Java (embedded) QuestDB instance through the
+You can insert geohashes into tables through Java (embedded) QuestDB instance through the
 `TableWriter`'s `putGeoHash` method which accepts `LONG` values natively with
 the destination precision. Additionally, `GeoHashes.fromString` may be used for
 string conversion, but comes with some performance overhead as opposed to `long`
@@ -319,7 +319,7 @@ try (TableWriter writer = engine.getWriter(ctx.getCairoSecurityContext(), "geoha
 
 ```
 
-Reading geohashes via Java is done by means of the following methods:
+Reading geohashes through Java is done by means of the following methods:
 
 - `Record.getGeoByte(columnIndex)`
 - `Record.getGeoShort(columnIndex)`
@@ -343,9 +343,9 @@ Invoking the method above will return one of the following:
 For more information and detailed examples of using table readers and writers,
 see the [Java API documentation](/docs/reference/api/java-embedded/).
 
-## InfluxDB line protocol
+## ILP
 
-Geohashes may also be inserted via InfluxDB line protocol. The required steps 
+Geohashes may also be inserted through ILP. The required steps 
 are given below.
 
 1. Create table with columns of geohash type beforehand:
@@ -354,7 +354,7 @@ are given below.
 CREATE TABLE tracking (ts timestamp, geohash geohash(8c));
 ```
 
-2. Insert via InfluxDB line protocol using the `geohash` field:
+2. Insert through ILP using the `geohash` field:
 
 ```bash
 tracking geohash="46swgj10"
@@ -362,7 +362,7 @@ tracking geohash="46swgj10"
 
 :::info
 
-The InfluxDB Line Protocol parser does not support geohash literals, but only supports
+The ILP parser does not support geohash literals, but only supports
 strings. This means that table columns of the type `geohash` with the desired
 precision must exist before inserting rows with this protocol.
 
